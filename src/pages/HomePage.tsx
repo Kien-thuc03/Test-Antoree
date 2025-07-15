@@ -6,7 +6,7 @@ import ProductGrid from '../components/ProductGrid';
 import ProductDetailModal from '../components/ProductDetailModal';
 import SuggestionSection from '../components/SuggestionSection';
 import ViewHistorySection from '../components/ViewHistorySection';
-import { useProductContext } from '../context/ProductContext';
+import { useProductContext } from '../hooks/useProductContext';
 import type { Product } from '../types';
 // Sử dụng banner trong component
 import bgImage from '../assets/images/HandDrawnDoodle.png';

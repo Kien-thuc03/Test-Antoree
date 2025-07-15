@@ -25,12 +25,12 @@ export const api = {
   filterProductsByPrice: async (priceRange: string): Promise<Product[]> => {
     await delay(500);
     switch(priceRange) {
-      case 'under500k':
-        return products.filter(product => product.price < 500000);
-      case '500k-1m':
-        return products.filter(product => product.price >= 500000 && product.price <= 1000000);
-      case 'over1m':
-        return products.filter(product => product.price > 1000000);
+      case 'under1m':
+        return products.filter(product => product.price < 1000000);
+      case '1m-5m':
+        return products.filter(product => product.price >= 1000000 && product.price <= 5000000);
+      case 'over5m':
+        return products.filter(product => product.price > 5000000);
       default:
         return products;
     }

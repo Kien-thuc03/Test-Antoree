@@ -1,5 +1,5 @@
 import React from 'react';
-import { useProductContext } from '../context/ProductContext';
+import { useProductContext } from '../hooks/useProductContext';
 import ProductCard from './ProductCard';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 

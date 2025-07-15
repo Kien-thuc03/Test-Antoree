@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
 import ProductDetailModal from '../components/ProductDetailModal';
-import { useProductContext } from '../context/ProductContext';
+import { useProductContext } from '../hooks/useProductContext';
 import { HeartIcon } from '@heroicons/react/24/solid';
 import type { Product } from '../types';
 import { Link } from 'react-router-dom';

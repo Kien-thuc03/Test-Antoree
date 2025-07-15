@@ -1,5 +1,5 @@
 import React from 'react';
-import { useProductContext } from '../context/ProductContext';
+import { useProductContext } from '../hooks/useProductContext';
 import { categories } from '../mocks/productData';
 
 const FilterBar: React.FC = () => {
@@ -8,7 +8,7 @@ const FilterBar: React.FC = () => {
   const handlePriceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setFilterOptions({
       ...filterOptions,
-      priceRange: e.target.value as 'all' | 'under500k' | '500k-1m' | 'over1m'
+      priceRange: e.target.value as 'all' | 'under1m' | '1m-5m' | 'over5m'
     });
   };
 
@@ -50,9 +50,9 @@ const FilterBar: React.FC = () => {
             aria-label="Lọc theo khoảng giá"
           >
             <option value="all">Tất cả giá</option>
-            <option value="under500k">Dưới 500.000đ</option>
-            <option value="500k-1m">500.000đ - 1.000.000đ</option>
-            <option value="over1m">Trên 1.000.000đ</option>
+            <option value="under1m">Dưới 1.000.000đ</option>
+            <option value="1m-5m">1.000.000đ - 5.000.000đ</option>
+            <option value="over5m">Trên 5.000.000đ</option>
           </select>
         </div>
       </div>

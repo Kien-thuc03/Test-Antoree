@@ -1,32 +1,7 @@
-import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import React, { useState, useEffect, type ReactNode } from 'react';
 import type { Product, FilterOptions } from '../types';
 import { api } from '../services/api';
-
-interface ProductContextType {
-  products: Product[];
-  filteredProducts: Product[];
-  favoriteProducts: Product[];
-  viewedProducts: Product[];
-  suggestedProducts: Product[];
-  loading: boolean;
-  loadingSuggestions: boolean;
-  error: string | null;
-  filterOptions: FilterOptions;
-  setFilterOptions: (options: FilterOptions) => void;
-  toggleFavorite: (productId: string) => Promise<void>;
-  viewProduct: (productId: string) => Promise<void>;
-  getSuggestions: () => Promise<void>;
-}
-
-const ProductContext = createContext<ProductContextType | undefined>(undefined);
-
-export const useProductContext = () => {
-  const context = useContext(ProductContext);
-  if (!context) {
-    throw new Error('useProductContext must be used within a ProductProvider');
-  }
-  return context;
-};
+import { ProductContext } from './ProductContextDefinition';
 
 interface ProductProviderProps {
   children: ReactNode;
@@ -58,7 +33,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
         setFilteredProducts(data);
         setLoading(false);
       } catch (err) {
-        setError('Không thể tải danh sách sản phẩm. Vui lòng thử lại sau.');
+        setError('Không thể tải danh sách sản phẩm. Vui lòng thử lại sau.' + err);
         setLoading(false);
       }
     };
@@ -98,7 +73,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
         setFilteredProducts(filtered);
         setLoading(false);
       } catch (err) {
-        setError('Không thể lọc sản phẩm. Vui lòng thử lại sau.');
+        setError('Không thể lọc sản phẩm. Vui lòng thử lại sau.' + err);
         setLoading(false);
       }
     };

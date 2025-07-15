@@ -9,6 +9,8 @@ export interface Product {
   rating: number;
   reviewCount: number;
   isFavorite: boolean;
+  instructor?: string; // Giảng viên của khóa học (tùy chọn)
+  duration?: string;   // Thời lượng khóa học hoặc thời hạn sử dụng (tùy chọn)
 }
 
 export interface User {
@@ -21,6 +23,6 @@ export interface User {
 
 export interface FilterOptions {
   searchQuery: string;
-  priceRange: 'all' | 'under500k' | '500k-1m' | 'over1m';
+  priceRange: 'all' | 'under1m' | '1m-5m' | 'over5m';
   category: string;
 } 

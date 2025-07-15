@@ -1,125 +1,176 @@
 import type { Product } from '../types';
 
+// Các danh mục sản phẩm
+export const categories = [
+  'Tất cả',
+  'Khóa học trẻ em',
+  'Khóa học người lớn',
+  'Luyện thi IELTS',
+  'Luyện thi TOEIC',
+  'Tiếng Anh giao tiếp',
+  'Tiếng Anh doanh nghiệp',
+  'Giáo trình - Sách',
+  'Tài liệu học tập',
+  'Giảng viên'
+];
+
+// Danh sách sản phẩm
 export const products: Product[] = [
   {
     id: '1',
-    name: 'Khóa học tiếng Anh giao tiếp với người bản xứ',
-    price: 450000,
+    name: 'Khóa học Tiếng Anh giao tiếp 1-1 với giáo viên bản xứ',
+    price: 4500000,
     imageUrl: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZW5nbGlzaCUyMGNsYXNzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
     shortDescription: 'Học tiếng Anh 1-1 với giáo viên bản ngữ từ Mỹ, Anh, Canada',
     description: 'Khóa học tiếng Anh giao tiếp với giáo viên bản ngữ sẽ giúp bạn phát âm chuẩn và tự tin khi giao tiếp với người nước ngoài. Khóa học bao gồm 30 buổi học, mỗi buổi 50 phút, lịch học linh hoạt theo thời gian của bạn. Giáo viên đều có chứng chỉ TESOL/CELTA và nhiều năm kinh nghiệm giảng dạy.',
-    category: 'Ngoại ngữ',
+    category: 'Tiếng Anh giao tiếp',
     rating: 4.8,
     reviewCount: 245,
-    isFavorite: false
+    isFavorite: false,
+    instructor: 'John Smith'
   },
   {
     id: '2',
-    name: 'Khóa học Python cho người mới bắt đầu',
-    price: 799000,
-    imageUrl: 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-    shortDescription: 'Học lập trình Python từ cơ bản đến nâng cao với dự án thực tế',
-    description: 'Khóa học Python cho người mới bắt đầu sẽ giúp bạn nắm vững ngôn ngữ lập trình phổ biến nhất hiện nay. Bạn sẽ học từ cú pháp cơ bản đến các khái niệm nâng cao như OOP, làm việc với database, và xây dựng ứng dụng web với Django. Khóa học bao gồm 50 video bài giảng, 100+ bài tập thực hành và 5 dự án thực tế để áp dụng kiến thức.',
-    category: 'Công nghệ',
-    rating: 4.7,
+    name: 'Khóa học IELTS đảm bảo đầu ra 6.5+',
+    price: 7990000,
+    imageUrl: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3R1ZHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+    shortDescription: 'Luyện thi IELTS với lộ trình cá nhân hóa, cam kết đầu ra',
+    description: 'Khóa học IELTS đảm bảo đầu ra 6.5+ với phương pháp giảng dạy độc quyền của Antoree. Chúng tôi phân tích điểm yếu của từng học viên và xây dựng lộ trình học tập phù hợp. Khóa học bao gồm 48 buổi học trực tiếp với giáo viên có chứng chỉ IELTS 8.0+ và kinh nghiệm luyện thi quốc tế. Cam kết hoàn tiền nếu không đạt mục tiêu đầu ra.',
+    category: 'Luyện thi IELTS',
+    rating: 4.9,
     reviewCount: 189,
-    isFavorite: false
+    isFavorite: false,
+    instructor: 'Sarah Johnson'
   },
   {
     id: '3',
-    name: 'Khóa học Marketing Online tổng quát',
-    price: 1200000,
-    imageUrl: 'https://images.unsplash.com/photo-1557838923-2985c318be48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFya2V0aW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-    shortDescription: 'Học cách xây dựng chiến lược marketing online hiệu quả',
-    description: 'Khóa học Marketing Online tổng quát cung cấp kiến thức từ cơ bản đến chuyên sâu về các kênh marketing online như Google Ads, Facebook Ads, SEO, Content Marketing, Email Marketing. Bạn sẽ được học cách xây dựng chiến lược marketing toàn diện, phân tích dữ liệu và tối ưu hóa chiến dịch. Giảng viên là chuyên gia marketing với hơn 10 năm kinh nghiệm trong ngành.',
-    category: 'Marketing',
+    name: 'Khóa học Tiếng Anh cho trẻ em 5-8 tuổi',
+    price: 3200000,
+    imageUrl: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2hpbGRyZW4lMjBsZWFybmluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    shortDescription: 'Phương pháp học tiếng Anh vui nhộn cho trẻ em thông qua trò chơi và hoạt động sáng tạo',
+    description: 'Khóa học Tiếng Anh cho trẻ em 5-8 tuổi được thiết kế dựa trên phương pháp TPR (Total Physical Response) và CLIL (Content and Language Integrated Learning). Trẻ sẽ học tiếng Anh thông qua các hoạt động vui chơi, bài hát, trò chơi và dự án sáng tạo. Khóa học phát triển toàn diện 4 kỹ năng nghe, nói, đọc, viết với giáo trình Cambridge Kids. Mỗi lớp tối đa 6 học viên để đảm bảo chất lượng.',
+    category: 'Khóa học trẻ em',
     rating: 4.9,
     reviewCount: 321,
-    isFavorite: false
+    isFavorite: false,
+    instructor: 'Emily Parker'
   },
   {
     id: '4',
-    name: 'Khóa học Piano cơ bản',
-    price: 350000,
-    imageUrl: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGlhbm98ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-    shortDescription: 'Học đàn piano từ cơ bản với phương pháp hiện đại',
-    description: 'Khóa học Piano cơ bản dành cho người mới bắt đầu, không cần kiến thức âm nhạc trước đó. Bạn sẽ học cách đọc nốt nhạc, kỹ thuật đánh đàn cơ bản và thực hành với các bài hát đơn giản. Khóa học bao gồm 24 bài học, mỗi bài 30 phút, có video hướng dẫn chi tiết và tài liệu đi kèm.',
-    category: 'Âm nhạc',
-    rating: 4.5,
+    name: 'Khóa học TOEIC từ 0 đến 750+',
+    price: 3500000,
+    imageUrl: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3R1ZHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+    shortDescription: 'Chinh phục TOEIC từ con số 0 với phương pháp làm bài hiệu quả',
+    description: 'Khóa học TOEIC từ 0 đến 750+ giúp bạn nắm vững cấu trúc bài thi, từ vựng và ngữ pháp trọng tâm, cùng chiến thuật làm bài hiệu quả. Khóa học bao gồm 36 buổi học, chia thành 3 giai đoạn: nền tảng, luyện đề và mô phỏng thi thật. Học viên được cung cấp tài liệu học tập độc quyền và có quyền truy cập vào ngân hàng đề thi online với hơn 50 bộ đề TOEIC cập nhật mới nhất.',
+    category: 'Luyện thi TOEIC',
+    rating: 4.7,
     reviewCount: 112,
-    isFavorite: false
+    isFavorite: false,
+    instructor: 'David Williams'
   },
   {
     id: '5',
-    name: 'Khóa học Thiết kế đồ họa với Adobe',
-    price: 899000,
-    imageUrl: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JhcGhpYyUyMGRlc2lnbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-    shortDescription: 'Học thiết kế với bộ công cụ Adobe (Photoshop, Illustrator, InDesign)',
-    description: 'Khóa học Thiết kế đồ họa với Adobe giúp bạn thành thạo 3 phần mềm thiết kế quan trọng nhất: Photoshop, Illustrator và InDesign. Bạn sẽ học cách chỉnh sửa hình ảnh, thiết kế logo, banner, poster và các ấn phẩm quảng cáo chuyên nghiệp. Khóa học bao gồm 60 video bài giảng, file thiết kế mẫu và các dự án thực hành.',
-    category: 'Thiết kế',
+    name: 'Khóa học Tiếng Anh thương mại cho doanh nghiệp',
+    price: 8990000,
+    imageUrl: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGJ1c2luZXNzJTIwbWVldGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    shortDescription: 'Nâng cao kỹ năng tiếng Anh chuyên ngành cho nhân viên doanh nghiệp',
+    description: 'Khóa học Tiếng Anh thương mại được thiết kế riêng cho các doanh nghiệp muốn nâng cao năng lực tiếng Anh cho nhân viên. Chương trình bao gồm các module: Email business, Meeting & Presentation, Negotiation, Report Writing và Business Small Talk. Học viên sẽ được thực hành với tình huống thực tế từ môi trường doanh nghiệp. Khóa học có thể tùy chỉnh theo nhu cầu cụ thể của từng công ty và lĩnh vực.',
+    category: 'Tiếng Anh doanh nghiệp',
     rating: 4.6,
-    reviewCount: 178,
-    isFavorite: false
+    reviewCount: 78,
+    isFavorite: false,
+    instructor: 'Michael Brown'
   },
   {
     id: '6',
-    name: 'Khóa học Kế toán thực hành',
+    name: 'Giáo trình Cambridge English Empower',
     price: 1500000,
-    imageUrl: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YWNjb3VudGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-    shortDescription: 'Học kế toán thực tế từ A-Z với chuyên gia hàng đầu',
-    description: 'Khóa học Kế toán thực hành cung cấp kiến thức và kỹ năng kế toán toàn diện, từ hạch toán cơ bản đến lập báo cáo tài chính, quyết toán thuế. Bạn sẽ được thực hành trên phần mềm kế toán thực tế và xử lý các tình huống kế toán phát sinh trong doanh nghiệp. Giảng viên là kế toán trưởng với hơn 15 năm kinh nghiệm tại các công ty lớn.',
-    category: 'Kinh doanh',
+    imageUrl: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZHklMjBib29rc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    shortDescription: 'Bộ giáo trình tiếng Anh toàn diện từ Cambridge (A1-C1)',
+    description: 'Bộ giáo trình Cambridge English Empower là tài liệu học tiếng Anh toàn diện phát triển bởi Đại học Cambridge. Bộ sách gồm 5 cấp độ từ A1 đến C1 theo khung tham chiếu châu Âu CEFR, giúp người học phát triển đồng đều 4 kỹ năng. Mỗi bộ bao gồm Student\'s Book, Workbook, Teacher\'s Book và quyền truy cập vào nền tảng học tập trực tuyến với các bài tập tương tác và đánh giá tiến độ tự động.',
+    category: 'Giáo trình - Sách',
     rating: 4.7,
-    reviewCount: 156,
-    isFavorite: false
+    reviewCount: 56,
+    isFavorite: false,
+    duration: '12 tháng'
   },
   {
     id: '7',
-    name: 'Khóa học Tiếng Nhật N5-N4',
-    price: 650000,
-    imageUrl: 'https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8amFwYW5lc2UlMjBsYW5ndWFnZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-    shortDescription: 'Học tiếng Nhật từ con số 0 đến trình độ N4',
-    description: 'Khóa học Tiếng Nhật N5-N4 giúp bạn nắm vững ngữ pháp, từ vựng và kỹ năng giao tiếp cơ bản bằng tiếng Nhật. Khóa học bao gồm 48 bài học, covering hiragana, katakana, kanji cơ bản, và các mẫu câu giao tiếp thông dụng. Sau khóa học, bạn có thể tham gia kỳ thi JLPT N4 với sự tự tin.',
-    category: 'Ngoại ngữ',
+    name: 'Bộ tài liệu luyện thi IELTS 8.0+',
+    price: 850000,
+    imageUrl: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZHklMjBib29rc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    shortDescription: 'Bộ tài liệu độc quyền từ các giảng viên IELTS 8.5+',
+    description: 'Bộ tài liệu luyện thi IELTS 8.0+ là sản phẩm độc quyền được biên soạn bởi đội ngũ giảng viên có band điểm IELTS 8.5+ của Antoree. Bộ tài liệu bao gồm: Sổ tay từ vựng học thuật theo chủ đề, 150+ mẫu câu Writing Task 1 & 2 đạt 8.0+, 50 bài mẫu Speaking đạt điểm cao, chiến thuật làm bài Reading & Listening hiệu quả. Ngoài ra còn có các bộ đề mô phỏng và hướng dẫn chi tiết cách tự đánh giá và cải thiện bài làm.',
+    category: 'Tài liệu học tập',
     rating: 4.8,
     reviewCount: 210,
-    isFavorite: false
+    isFavorite: false,
+    duration: '6 tháng'
   },
   {
     id: '8',
-    name: 'Khóa học Yoga cho người mới bắt đầu',
-    price: 399000,
-    imageUrl: 'https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8eW9nYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
-    shortDescription: 'Học yoga tại nhà với hướng dẫn chi tiết, phù hợp cho người mới',
-    description: 'Khóa học Yoga cho người mới bắt đầu cung cấp các bài tập an toàn, hiệu quả cho người chưa có kinh nghiệm tập yoga. Bạn sẽ học các tư thế cơ bản, kỹ thuật thở đúng và cách kết hợp chuyển động với hơi thở. Khóa học bao gồm 30 video bài tập, từ 15-45 phút mỗi bài, phù hợp với nhiều mức độ thể lực khác nhau.',
-    category: 'Sức khỏe',
+    name: 'Khóa học Tiếng Anh cho trẻ em 9-12 tuổi',
+    price: 3990000,
+    imageUrl: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2hpbGRyZW4lMjBsZWFybmluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    shortDescription: 'Phát triển tiếng Anh học thuật và giao tiếp cho trẻ 9-12 tuổi',
+    description: 'Khóa học Tiếng Anh cho trẻ 9-12 tuổi tập trung vào phát triển khả năng sử dụng tiếng Anh học thuật và giao tiếp. Trẻ sẽ được học với giáo trình chuẩn quốc tế, kết hợp với các dự án STEM bằng tiếng Anh để phát triển tư duy phản biện và kỹ năng thế kỷ 21. Khóa học bao gồm 48 buổi học, mỗi buổi 75 phút với các hoạt động đa dạng: thuyết trình, tranh luận, viết sáng tạo và nghiên cứu nhóm.',
+    category: 'Khóa học trẻ em',
     rating: 4.9,
-    reviewCount: 287,
-    isFavorite: false
+    reviewCount: 87,
+    isFavorite: false,
+    instructor: 'Jennifer Wilson'
   },
   {
     id: '9',
-    name: 'Khóa học Làm bánh Pháp',
+    name: 'Giảng viên Jessica Thompson - Chuyên gia IELTS',
     price: 850000,
-    imageUrl: 'https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlbmNoJTIwcGFzdHJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-    shortDescription: 'Học làm bánh Pháp với đầu bếp có kinh nghiệm quốc tế',
-    description: 'Khóa học Làm bánh Pháp dạy bạn cách làm các loại bánh nổi tiếng của Pháp như macaron, croissant, eclair, tart và các loại bánh ngọt khác. Bạn sẽ học các kỹ thuật làm bánh chuyên nghiệp, cách trang trí bánh và những bí quyết của đầu bếp. Khóa học bao gồm 20 video hướng dẫn chi tiết, công thức và tips để thành công ngay từ lần đầu tiên.',
-    category: 'Ẩm thực',
-    rating: 4.7,
+    imageUrl: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dGVhY2hlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    shortDescription: 'Giảng viên IELTS với hơn 10 năm kinh nghiệm, chuyên Writing & Speaking',
+    description: 'Jessica Thompson là giảng viên IELTS hàng đầu với hơn 10 năm kinh nghiệm giảng dạy. Cô có bằng Thạc sĩ TESOL từ Đại học Melbourne và chứng chỉ IELTS 8.5 Overall (Writing 9.0, Speaking 8.5). Jessica đã giúp hơn 1000 học viên đạt điểm IELTS mục tiêu, với phương pháp giảng dạy độc đáo tập trung vào việc phát triển tư duy ngôn ngữ và chiến lược làm bài hiệu quả. Đặc biệt, cô có thế mạnh trong việc cải thiện điểm số Writing và Speaking cho học viên.',
+    category: 'Giảng viên',
+    rating: 4.9,
     reviewCount: 142,
-    isFavorite: false
+    isFavorite: false,
+    duration: '1 buổi/90 phút'
   },
   {
     id: '10',
-    name: 'Khóa học Đầu tư chứng khoán cho người mới',
+    name: 'Giảng viên Robert Chen - Chuyên gia Tiếng Anh doanh nghiệp',
     price: 1200000,
-    imageUrl: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3RvY2slMjBtYXJrZXR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
-    shortDescription: 'Học cách đầu tư chứng khoán an toàn và hiệu quả',
-    description: 'Khóa học Đầu tư chứng khoán cho người mới cung cấp kiến thức nền tảng về thị trường chứng khoán, cách đọc báo cáo tài chính, phân tích cơ bản và kỹ thuật. Bạn sẽ học cách xây dựng danh mục đầu tư, quản lý rủi ro và các chiến lược đầu tư phù hợp với mục tiêu tài chính cá nhân. Giảng viên là chuyên gia với hơn 12 năm kinh nghiệm đầu tư trên thị trường chứng khoán Việt Nam.',
-    category: 'Tài chính',
+    imageUrl: 'https://images.unsplash.com/photo-1589386417686-0d34b5903d23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8YXNpYW4lMjB0ZWFjaGVyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    shortDescription: 'Chuyên gia Tiếng Anh thương mại với kinh nghiệm làm việc tại các tập đoàn đa quốc gia',
+    description: 'Robert Chen là chuyên gia đào tạo Tiếng Anh thương mại với hơn 15 năm kinh nghiệm làm việc tại các tập đoàn đa quốc gia như Google, Microsoft và HSBC. Ông có bằng MBA từ Harvard Business School và chứng chỉ đào tạo doanh nghiệp từ Cambridge. Robert chuyên đào tạo các kỹ năng tiếng Anh thương mại như đàm phán, thuyết trình, quản lý cuộc họp và giao tiếp liên văn hóa. Phương pháp giảng dạy của ông kết hợp lý thuyết với các tình huống thực tế từ kinh nghiệm doanh nghiệp thực chiến.',
+    category: 'Giảng viên',
+    rating: 4.8,
+    reviewCount: 89,
+    isFavorite: false,
+    duration: '1 buổi/90 phút'
+  },
+  {
+    id: '11',
+    name: 'Khóa học Tiếng Anh Academic cho học sinh THPT',
+    price: 5500000,
+    imageUrl: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudHMlMjBzdHVkeWluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    shortDescription: 'Phát triển kỹ năng tiếng Anh học thuật cho học sinh chuẩn bị vào đại học',
+    description: 'Khóa học Tiếng Anh Academic cho học sinh THPT tập trung vào phát triển kỹ năng tiếng Anh học thuật cần thiết cho việc học đại học và thi cử. Chương trình bao gồm các module: Academic Writing, Critical Reading, Presentation Skills và Research Methods. Học viên sẽ được rèn luyện cách viết essay, đọc hiểu và phân tích văn bản học thuật, thuyết trình chuyên nghiệp và phương pháp nghiên cứu bằng tiếng Anh. Đặc biệt phù hợp cho học sinh dự định du học hoặc theo học các chương trình quốc tế.',
+    category: 'Khóa học người lớn',
+    rating: 4.7,
+    reviewCount: 76,
+    isFavorite: false,
+    instructor: 'Andrew Wilson'
+  },
+  {
+    id: '12',
+    name: 'Bộ tài liệu Tiếng Anh giao tiếp theo tình huống',
+    price: 650000,
+    imageUrl: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZHklMjBib29rc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+    shortDescription: 'Tài liệu phát triển kỹ năng giao tiếp theo 50+ tình huống thực tế',
+    description: 'Bộ tài liệu Tiếng Anh giao tiếp theo tình huống bao gồm 50+ tình huống giao tiếp thực tế như: đi du lịch, phỏng vấn xin việc, hội họp, mua sắm, đi nhà hàng, đàm phán kinh doanh... Mỗi tình huống cung cấp từ vựng chuyên biệt, mẫu câu hữu ích, và các bài tập thực hành. Đi kèm là ứng dụng mobile với file âm thanh do người bản xứ thu âm, giúp người học luyện phát âm và ngữ điệu chuẩn. Tài liệu phù hợp cho người học muốn nâng cao kỹ năng giao tiếp thực tế.',
+    category: 'Tài liệu học tập',
     rating: 4.6,
-    reviewCount: 189,
-    isFavorite: false
+    reviewCount: 98,
+    isFavorite: false,
+    duration: '3 tháng'
   }
 ];
 
@@ -128,17 +179,4 @@ export const user: { id: string; name: string; favorites: string[]; viewHistory:
   name: 'Người dùng',
   favorites: [],
   viewHistory: []
-};
-
-export const categories = [
-  'Tất cả',
-  'Ngoại ngữ',
-  'Công nghệ',
-  'Marketing',
-  'Âm nhạc',
-  'Thiết kế',
-  'Kinh doanh',
-  'Sức khỏe',
-  'Ẩm thực',
-  'Tài chính'
-]; 
+}; 
