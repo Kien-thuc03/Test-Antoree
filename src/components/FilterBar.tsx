@@ -20,7 +20,7 @@ const FilterBar: React.FC = () => {
   };
 
   return (
-    <div className="bg-white shadow-md p-4 rounded-lg mb-6">
+    <div className="container mx-auto bg-white shadow-md p-4 rounded-lg mb-6">
       <div className="flex flex-col md:flex-row items-center justify-between">
         <div className="w-full md:w-auto mb-4 md:mb-0">
           <h3 className="text-sm font-medium text-gray-700 mb-2">Danh mục:</h3>

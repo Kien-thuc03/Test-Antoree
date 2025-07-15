@@ -37,13 +37,13 @@ export const api = {
   },
 
   // Lấy chi tiết sản phẩm
-  getProductById: async (productId: number): Promise<Product | undefined> => {
+  getProductById: async (productId: string): Promise<Product | undefined> => {
     await delay(300);
     return products.find(product => product.id === productId);
   },
 
   // Gợi ý sản phẩm (AI)
-  getSuggestions: async (userId: number): Promise<Product[]> => {
+  getSuggestions: async (userId: string): Promise<Product[]> => {
     await delay(1200); // Tăng độ trễ cho chức năng AI
     
     // Giả lập logic AI gợi ý dựa trên lịch sử xem và yêu thích của người dùng
@@ -104,7 +104,7 @@ export const api = {
   },
   
   // Đánh dấu/bỏ đánh dấu sản phẩm yêu thích
-  toggleFavorite: async (productId: number): Promise<{ success: boolean }> => {
+  toggleFavorite: async (productId: string): Promise<{ success: boolean }> => {
     await delay(300);
     const index = products.findIndex(product => product.id === productId);
     if (index !== -1) {
@@ -126,7 +126,7 @@ export const api = {
   },
   
   // Thêm sản phẩm vào lịch sử xem
-  addToViewHistory: async (productId: number): Promise<{ success: boolean }> => {
+  addToViewHistory: async (productId: string): Promise<{ success: boolean }> => {
     await delay(200);
     const index = products.findIndex(product => product.id === productId);
     if (index !== -1) {

@@ -11,7 +11,7 @@ interface ProductDetailModalProps {
   product: Product | null;
   isOpen: boolean;
   onClose: () => void;
-  onToggleFavorite: (productId: number) => void;
+  onToggleFavorite: (productId: string) => void;
 }
 
 const ProductDetailModal: React.FC<ProductDetailModalProps> = ({

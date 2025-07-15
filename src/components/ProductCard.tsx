@@ -6,7 +6,7 @@ import { formatCurrency } from '../utils/formatters';
 
 interface ProductCardProps {
   product: Product;
-  onToggleFavorite: (productId: number) => void;
+  onToggleFavorite: (productId: string) => void;
   onViewDetail: (product: Product) => void;
 }
 

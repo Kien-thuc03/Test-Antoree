@@ -13,8 +13,8 @@ interface ProductContextType {
   error: string | null;
   filterOptions: FilterOptions;
   setFilterOptions: (options: FilterOptions) => void;
-  toggleFavorite: (productId: number) => Promise<void>;
-  viewProduct: (productId: number) => Promise<void>;
+  toggleFavorite: (productId: string) => Promise<void>;
+  viewProduct: (productId: string) => Promise<void>;
   getSuggestions: () => Promise<void>;
 }
 
@@ -141,7 +141,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
   }, [products]);
 
   // Toggle trạng thái yêu thích sản phẩm
-  const toggleFavorite = async (productId: number) => {
+  const toggleFavorite = async (productId: string) => {
     try {
       const result = await api.toggleFavorite(productId);
       if (result.success) {
@@ -162,7 +162,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
   };
 
   // Thêm sản phẩm vào lịch sử xem
-  const viewProduct = async (productId: number) => {
+  const viewProduct = async (productId: string) => {
     try {
       await api.addToViewHistory(productId);
       // Cập nhật lịch sử xem
@@ -176,7 +176,7 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
   const getSuggestions = async () => {
     try {
       setLoadingSuggestions(true);
-      const suggestions = await api.getSuggestions(1); // User ID mặc định = 1
+      const suggestions = await api.getSuggestions('1'); // User ID mặc định = 1
       setSuggestedProducts(suggestions);
       setLoadingSuggestions(false);
     } catch (err) {

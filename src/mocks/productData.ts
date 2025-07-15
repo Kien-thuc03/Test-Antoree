@@ -2,7 +2,7 @@ import type { Product } from '../types';
 
 export const products: Product[] = [
   {
-    id: 1,
+    id: '1',
     name: 'Khóa học tiếng Anh giao tiếp với người bản xứ',
     price: 450000,
     imageUrl: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZW5nbGlzaCUyMGNsYXNzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
@@ -14,7 +14,7 @@ export const products: Product[] = [
     isFavorite: false
   },
   {
-    id: 2,
+    id: '2',
     name: 'Khóa học Python cho người mới bắt đầu',
     price: 799000,
     imageUrl: 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZ3JhbW1pbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
@@ -26,7 +26,7 @@ export const products: Product[] = [
     isFavorite: false
   },
   {
-    id: 3,
+    id: '3',
     name: 'Khóa học Marketing Online tổng quát',
     price: 1200000,
     imageUrl: 'https://images.unsplash.com/photo-1557838923-2985c318be48?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFya2V0aW5nfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
@@ -38,7 +38,7 @@ export const products: Product[] = [
     isFavorite: false
   },
   {
-    id: 4,
+    id: '4',
     name: 'Khóa học Piano cơ bản',
     price: 350000,
     imageUrl: 'https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGlhbm98ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
@@ -50,7 +50,7 @@ export const products: Product[] = [
     isFavorite: false
   },
   {
-    id: 5,
+    id: '5',
     name: 'Khóa học Thiết kế đồ họa với Adobe',
     price: 899000,
     imageUrl: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z3JhcGhpYyUyMGRlc2lnbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
@@ -62,7 +62,7 @@ export const products: Product[] = [
     isFavorite: false
   },
   {
-    id: 6,
+    id: '6',
     name: 'Khóa học Kế toán thực hành',
     price: 1500000,
     imageUrl: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YWNjb3VudGluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
@@ -74,7 +74,7 @@ export const products: Product[] = [
     isFavorite: false
   },
   {
-    id: 7,
+    id: '7',
     name: 'Khóa học Tiếng Nhật N5-N4',
     price: 650000,
     imageUrl: 'https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8amFwYW5lc2UlMjBsYW5ndWFnZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
@@ -86,7 +86,7 @@ export const products: Product[] = [
     isFavorite: false
   },
   {
-    id: 8,
+    id: '8',
     name: 'Khóa học Yoga cho người mới bắt đầu',
     price: 399000,
     imageUrl: 'https://images.unsplash.com/photo-1575052814086-f385e2e2ad1b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8eW9nYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
@@ -98,7 +98,7 @@ export const products: Product[] = [
     isFavorite: false
   },
   {
-    id: 9,
+    id: '9',
     name: 'Khóa học Làm bánh Pháp',
     price: 850000,
     imageUrl: 'https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZnJlbmNoJTIwcGFzdHJ5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
@@ -110,7 +110,7 @@ export const products: Product[] = [
     isFavorite: false
   },
   {
-    id: 10,
+    id: '10',
     name: 'Khóa học Đầu tư chứng khoán cho người mới',
     price: 1200000,
     imageUrl: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c3RvY2slMjBtYXJrZXR8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
@@ -123,8 +123,8 @@ export const products: Product[] = [
   }
 ];
 
-export const user: { id: number; name: string; favorites: number[]; viewHistory: number[] } = {
-  id: 1,
+export const user: { id: string; name: string; favorites: string[]; viewHistory: string[] } = {
+  id: '1',
   name: 'Người dùng',
   favorites: [],
   viewHistory: []

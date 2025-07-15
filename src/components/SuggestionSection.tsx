@@ -4,7 +4,7 @@ import ProductCard from './ProductCard';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 
 interface SuggestionSectionProps {
-  onViewDetail: (productId: number) => void;
+  onViewDetail: (productId: string) => void;
 }
 
 const SuggestionSection: React.FC<SuggestionSectionProps> = ({ onViewDetail }) => {

@@ -1,5 +1,5 @@
 export interface Product {
-  id: number;
+  id: string;
   name: string;
   price: number;
   imageUrl: string;
@@ -12,11 +12,11 @@ export interface Product {
 }
 
 export interface User {
-  id: number;
+  id: string;
   name: string;
   email: string;
-  viewHistory: number[]; // Mảng id của sản phẩm đã xem
-  favorites: number[]; // Mảng id của sản phẩm yêu thích
+  viewHistory: string[]; // Mảng id của sản phẩm đã xem
+  favorites: string[]; // Mảng id của sản phẩm yêu thích
 }
 
 export interface FilterOptions {
