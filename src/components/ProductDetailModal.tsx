@@ -35,7 +35,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-black opacity-50" />
+            <div className="fixed inset-0 bg-black opacity-50" />
           </Transition.Child>
 
           {/* Trick để căn giữa modal */}

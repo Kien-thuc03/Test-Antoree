@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import type { Product } from '../types';
-import { HeartIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, StarIcon, PlayIcon, ClockIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 import { formatCurrency } from '../utils/formatters';
 
@@ -11,68 +11,167 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, onViewDetail }) => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
   const handleFavoriteClick = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Ngăn không mở modal khi click vào tim
+    e.stopPropagation();
     onToggleFavorite(product.id);
+  };
+
+  const handleCardClick = () => {
+    onViewDetail(product);
+  };
+
+  const renderStars = (rating: number) => {
+    return Array.from({ length: 5 }, (_, index) => {
+      const isFilled = index < Math.floor(rating);
+      return (
+        <StarIcon
+          key={index}
+          className={`w-4 h-4 ${isFilled ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
+        />
+      );
+    });
   };
 
   return (
     <div 
-      className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer"
-      onClick={() => onViewDetail(product)}
+      className="group relative bg-white rounded-2xl shadow-soft hover:shadow-lifted overflow-hidden cursor-pointer transform transition-all duration-300 hover:-translate-y-2"
+      onClick={handleCardClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative">
+      {/* Image Container */}
+      <div className="relative h-48 overflow-hidden">
+        {/* Loading Skeleton */}
+        {!isImageLoaded && (
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer"></div>
+        )}
+        
         <img 
           src={product.imageUrl} 
           alt={product.name}
-          className="w-full h-48 object-cover"
+          className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
+            isImageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          onLoad={() => setIsImageLoaded(true)}
         />
+        
+        {/* Overlay */}
+        <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-300 ${
+          isHovered ? 'opacity-100' : 'opacity-0'
+        }`}>
+          {/* Play Button */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <button 
+              className={`bg-white/20 backdrop-blur-sm rounded-full p-4 transform transition-all duration-300 ${
+                isHovered ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
+              }`}
+              aria-label="Xem trước khóa học"
+              title="Xem trước khóa học"
+            >
+              <PlayIcon className="w-8 h-8 text-white" />
+            </button>
+          </div>
+        </div>
+
+        {/* Category Badge */}
+        <div className="absolute top-3 left-3">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-brand-blue to-brand-purple text-white shadow-md">
+            {product.category}
+          </span>
+        </div>
+
+        {/* Favorite Button */}
         <button
           onClick={handleFavoriteClick}
-          className="absolute top-2 right-2 w-8 h-8 rounded-full bg-white bg-opacity-70 flex items-center justify-center transition-colors hover:bg-opacity-100"
+          className={`absolute top-3 right-3 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110 ${
+            product.isFavorite ? 'text-red-500' : 'text-gray-600'
+          }`}
           aria-label={product.isFavorite ? "Bỏ yêu thích" : "Yêu thích"}
         >
           {product.isFavorite ? (
-            <HeartIconSolid className="w-5 h-5 text-red-500" />
+            <HeartIconSolid className="w-5 h-5" />
           ) : (
-            <HeartIcon className="w-5 h-5 text-gray-600" />
+            <HeartIcon className="w-5 h-5" />
           )}
         </button>
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent text-white p-4">
-          <div className="text-sm font-semibold">{product.category}</div>
-        </div>
-      </div>
-      <div className="p-4">
-        <h3 className="text-lg font-semibold mb-2 line-clamp-2">{product.name}</h3>
-        <p className="text-gray-600 text-sm mb-3 line-clamp-2">{product.shortDescription}</p>
-        <div className="flex items-center justify-between mt-auto">
-          <div className="font-bold text-blue-600">{formatCurrency(product.price)}</div>
-          <div className="flex items-center">
-            <div className="flex items-center mr-2">
-              {[...Array(5)].map((_, i) => (
-                <svg 
-                  key={i}
-                  className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-yellow-500' : 'text-gray-300'}`}
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                </svg>
-              ))}
+
+        {/* Quick Info */}
+        <div className="absolute bottom-3 left-3 right-3 text-white text-sm">
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center">
+              <ClockIcon className="w-4 h-4 mr-1" />
+              <span>2h 30m</span>
             </div>
-            <span className="text-sm text-gray-600">({product.reviewCount})</span>
+            <div className="flex items-center">
+              <UserGroupIcon className="w-4 h-4 mr-1" />
+              <span>156</span>
+            </div>
           </div>
         </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
+        {/* Title */}
+        <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-brand-blue transition-colors duration-300">
+          {product.name}
+        </h3>
+
+        {/* Description */}
+        <p className="text-gray-600 text-sm mb-4 line-clamp-2">
+          {product.shortDescription}
+        </p>
+
+        {/* Rating & Reviews */}
+        <div className="flex items-center mb-4">
+          <div className="flex items-center mr-3">
+            {renderStars(product.rating)}
+          </div>
+          <span className="text-sm text-gray-600">
+            {product.rating.toFixed(1)} ({product.reviewCount})
+          </span>
+        </div>
+
+        {/* Price & Action */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <span className="text-2xl font-bold text-antoree-blue">
+              {formatCurrency(product.price)}
+            </span>
+            <span className="text-sm text-gray-400 line-through">
+              {formatCurrency(product.price * 1.5)}
+            </span>
+          </div>
+          
+          <div className="flex items-center text-sm text-antoree-green-light">
+            <span className="bg-antoree-green-light/20 px-2 py-1 rounded-full font-medium">
+              -33%
+            </span>
+          </div>
+        </div>
+
+        {/* Action Button */}
         <button
-          className="mt-4 w-full py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          className="mt-4 w-full bg-gradient-to-r from-antoree-blue to-antoree-purple text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
           onClick={(e) => {
             e.stopPropagation();
             onViewDetail(product);
           }}
         >
-          Xem chi tiết
+          <span>Xem chi tiết</span>
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
         </button>
       </div>
+
+      {/* Hover Effect Highlight */}
+      <div className={`absolute inset-0 border-2 border-transparent rounded-2xl transition-all duration-300 ${
+        isHovered ? 'border-antoree-blue/20 shadow-glow' : ''
+      }`}></div>
     </div>
   );
 };
