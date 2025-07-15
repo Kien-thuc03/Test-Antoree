@@ -75,39 +75,44 @@ const HomePage: React.FC = () => {
       <Header />
       
       {/* Hero Section với background image */}
-      <section className="relative bg-[#06261D] overflow-hidden">
+      <section className="relative bg-[#06261D] overflow-hidden pb-24">
         <div 
           className="absolute inset-0 bg-fixed bg-no-repeat bg-cover bg-center opacity-30 z-0 transform scale-105 transition-transform duration-1000"
           style={{ backgroundImage: `url(${bgImage})` }}
         ></div>
         
         <div className="relative z-10 container mx-auto px-4 pt-20 pb-16">
-          <div className="max-w-3xl mx-auto text-center mb-8 animate-fade-in">
+          <div className="max-w-3xl mx-auto text-center mb-12 animate-fade-in">
             <h1 className="text-4xl md:text-5xl font-bold text-[#57F27E] mb-4 leading-tight">
-              EduTech Hub - Khám phá thế giới tri thức
+              Antoree - Năng cao khả năng ngôn ngữ của bạn
             </h1>
-            <p className="text-lg text-[#57F27E] mb-8">
-              Tìm kiếm và học tập với hàng nghìn khóa học chất lượng cao từ các chuyên gia hàng đầu.
+            <p className="text-lg text-[#57F27E] mb-12">
+              Tìm kiếm và học tập với hàng nghìn khóa học chất lượng cao từ các giáo viên hàng đầu.
             </p>
             
-            <form onSubmit={handleSearch} className="flex items-center max-w-xl mx-auto transition-all duration-300 transform hover:scale-[1.02]">
-              <input 
-                type="text" 
-                placeholder="Tìm kiếm khóa học" 
-                className="w-full p-3 rounded-l-lg border-r-0 border-gray-300 shadow-sm focus:ring-2 focus:ring-[#57F27E] focus:border-[#57F27E]" 
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <button 
-                type="submit" 
-                className="bg-[#57F27E] hover:bg-[#3ed066] text-[#06261D] font-medium p-3 px-6 rounded-r-lg transition-colors duration-300 shadow-sm flex items-center"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                Tìm kiếm
-              </button>
-            </form>
+            <div className="relative max-w-xl mx-auto">
+              <form onSubmit={handleSearch} className="flex items-center transition-all duration-300 transform hover:scale-[1.02]">
+                <input 
+                  type="text" 
+                  placeholder="Tìm kiếm khóa học" 
+                  className="w-full h-full p-4 rounded-l-lg border-r-0 border-gray-300 shadow-lg focus:ring-2 focus:ring-[#57F27E] focus:border-[#57F27E] bg-white/95 text-gray-800 placeholder-gray-500" 
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <button 
+                  title="Tìm kiếm"
+                  type="submit" 
+                  className="bg-[#57F27E] hover:bg-[#3ed066] text-[#06261D] font-medium p-4 px-8 rounded-r-lg transition-colors duration-300 shadow-lg flex items-center"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </button>
+              </form>
+              <div className="absolute -bottom-6 left-0 right-0 mx-auto text-center">
+                <span className="text-xs text-[#57F27E]/80 italic">Gợi ý: Tiếng Anh, Cô Nguyễn Thị Hạnh, Khóa học tiếng Anh lớp 12...</span>
+              </div>
+            </div>
           </div>
         </div>
         
