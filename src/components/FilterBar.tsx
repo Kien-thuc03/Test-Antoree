@@ -4,23 +4,27 @@ import { categories } from '../mocks/productData';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 const FilterBar: React.FC = () => {
-  const { filterOptions, setFilterOptions } = useProductContext();
+  const { filterOptions, setFilterOptions, applyFilters } = useProductContext();
   const [isPriceDropdownOpen, setIsPriceDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handlePriceChange = (value: string) => {
-    setFilterOptions({
+    const newFilterOptions = {
       ...filterOptions,
       priceRange: value as 'all' | 'under1m' | '1m-5m' | 'over5m'
-    });
+    };
+    setFilterOptions(newFilterOptions);
+    applyFilters(newFilterOptions);
     setIsPriceDropdownOpen(false);
   };
 
   const handleCategoryChange = (category: string) => {
-    setFilterOptions({
+    const newFilterOptions = {
       ...filterOptions,
       category
-    });
+    };
+    setFilterOptions(newFilterOptions);
+    applyFilters(newFilterOptions);
   };
 
   // Đóng dropdown khi click ra ngoài

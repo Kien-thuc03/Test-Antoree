@@ -95,7 +95,9 @@ const Header: React.FC = () => {
             </Link>
 
             {/* CTA Button */}
-            <button className="hidden md:block bg-gradient-to-r from-antoree-blue to-antoree-purple text-white font-medium px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+            <button className={`hidden md:block bg-gradient-to-r from-antoree-blue to-antoree-purple ${
+              isScrolled ? 'text-antoree-green' : 'text-white'
+            } font-medium px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}>
               Đăng nhập
             </button>
 
@@ -137,7 +139,9 @@ const Header: React.FC = () => {
               </Link>
             ))}
             <div className="pt-4 border-t border-white/10">
-              <button className="w-full bg-gradient-to-r from-antoree-blue to-antoree-purple text-white font-medium py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+              <button className={`w-full bg-gradient-to-r from-antoree-blue to-antoree-purple ${
+                isScrolled ? 'text-antoree-green' : 'text-white'
+              } font-medium py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}>
                 Đăng nhập
               </button>
             </div>

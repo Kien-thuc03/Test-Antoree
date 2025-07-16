@@ -36,6 +36,33 @@ export const api = {
     }
   },
 
+  // Lọc sản phẩm theo cả giá và danh mục
+  filterProducts: async (priceRange: string, category: string): Promise<Product[]> => {
+    await delay(500);
+    
+    let filteredProducts = [...products];
+    
+    // Lọc theo danh mục nếu không phải "Tất cả"
+    if (category !== "Tất cả") {
+      filteredProducts = filteredProducts.filter(product => product.category === category);
+    }
+    
+    // Lọc theo khoảng giá
+    switch(priceRange) {
+      case 'under1m':
+        filteredProducts = filteredProducts.filter(product => product.price < 1000000);
+        break;
+      case '1m-5m':
+        filteredProducts = filteredProducts.filter(product => product.price >= 1000000 && product.price <= 5000000);
+        break;
+      case 'over5m':
+        filteredProducts = filteredProducts.filter(product => product.price > 5000000);
+        break;
+    }
+    
+    return filteredProducts;
+  },
+
   // Lấy chi tiết sản phẩm
   getProductById: async (productId: string): Promise<Product | undefined> => {
     await delay(300);

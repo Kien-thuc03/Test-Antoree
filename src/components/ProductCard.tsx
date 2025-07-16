@@ -136,26 +136,27 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
         </div>
 
         {/* Price & Action */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-antoree-blue">
+        <div className="flex flex-col space-y-1 mb-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xl font-bold text-antoree-blue">
               {formatCurrency(product.price)}
             </span>
-            <span className="text-sm text-gray-400 line-through">
-              {formatCurrency(product.price * 1.5)}
-            </span>
+            
+            <div className="flex items-center text-sm text-antoree-green-light">
+              <span className="bg-antoree-green-light/20 px-2 py-1 rounded-full font-medium">
+                -33%
+              </span>
+            </div>
           </div>
           
-          <div className="flex items-center text-sm text-antoree-green-light">
-            <span className="bg-antoree-green-light/20 px-2 py-1 rounded-full font-medium">
-              -33%
-            </span>
+          <div className="text-xs text-gray-400 line-through">
+            {formatCurrency(product.price * 1.5)}
           </div>
         </div>
 
         {/* Action Button */}
         <button
-          className="mt-4 w-full bg-gradient-to-r from-antoree-blue to-antoree-purple text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
+          className="w-full bg-gradient-to-r from-antoree-blue to-antoree-purple text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
           onClick={(e) => {
             e.stopPropagation();
             onViewDetail(product);

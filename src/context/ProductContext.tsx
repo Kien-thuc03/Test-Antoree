@@ -48,18 +48,12 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
         setLoading(true);
         setError(null);
         
-        let filtered = [...products];
-        
-        // Lọc theo danh mục
-        if (filterOptions.category !== 'Tất cả') {
-          filtered = filtered.filter(product => 
-            product.category === filterOptions.category
-          );
-        }
-        
-        // Lọc theo khoảng giá
-        if (filterOptions.priceRange !== 'all') {
-          filtered = await api.filterProductsByPrice(filterOptions.priceRange);
+        // Sử dụng hàm filterProducts mới từ API để lọc cùng lúc theo cả category và price
+        let filtered;
+        if (filterOptions.category !== 'Tất cả' || filterOptions.priceRange !== 'all') {
+          filtered = await api.filterProducts(filterOptions.priceRange, filterOptions.category);
+        } else {
+          filtered = [...products];
         }
         
         // Lọc theo từ khóa tìm kiếm
@@ -160,6 +154,34 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
     }
   };
 
+  // Hàm lọc sản phẩm theo bộ lọc được chọn
+  const applyFilters = async (options: FilterOptions) => {
+    try {
+      setLoading(true);
+      
+      let filtered;
+      if (options.category !== 'Tất cả' || options.priceRange !== 'all') {
+        filtered = await api.filterProducts(options.priceRange, options.category);
+      } else {
+        filtered = [...products];
+      }
+      
+      // Lọc theo từ khóa tìm kiếm
+      if (options.searchQuery.trim()) {
+        filtered = filtered.filter(product => 
+          product.name.toLowerCase().includes(options.searchQuery.toLowerCase()) ||
+          product.shortDescription.toLowerCase().includes(options.searchQuery.toLowerCase())
+        );
+      }
+      
+      setFilteredProducts(filtered);
+      setLoading(false);
+    } catch (err) {
+      console.error('Không thể áp dụng bộ lọc:', err);
+      setLoading(false);
+    }
+  };
+
   const value = {
     products,
     filteredProducts,
@@ -173,7 +195,8 @@ export const ProductProvider: React.FC<ProductProviderProps> = ({ children }) =>
     setFilterOptions,
     toggleFavorite,
     viewProduct,
-    getSuggestions
+    getSuggestions,
+    applyFilters
   };
 
   return (

@@ -15,6 +15,7 @@ export interface ProductContextType {
   toggleFavorite: (productId: string) => Promise<void>;
   viewProduct: (productId: string) => Promise<void>;
   getSuggestions: () => Promise<void>;
+  applyFilters: (options: FilterOptions) => Promise<void>;
 }
 
 export const ProductContext = createContext<ProductContextType | undefined>(undefined); 
