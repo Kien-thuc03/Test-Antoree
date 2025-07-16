@@ -29,7 +29,7 @@ const Header: React.FC = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-antoree-green/55 backdrop-blur-sm shadow-lg' 
+        ? 'bg-antoree-green-light opacity-95 backdrop-blur-sm shadow-lg' 
         : 'bg-antoree-green'
     }`}>
       <div className="container mx-auto px-4">
@@ -53,14 +53,14 @@ const Header: React.FC = () => {
                 to={item.href}
                 className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 group ${
                   isActivePath(item.href)
-                    ? 'text-antoree-green-light'
-                    : isScrolled 
-                      ? 'text-antoree-green hover:text-antoree-green-light' 
-                      : 'text-white hover:text-antoree-green-light'
+                    ?  isScrolled ? 'text-antoree-green' : 'text-antoree-green-light'
+                    : isScrolled
+                      ? 'text-antoree-green'
+                      : 'text-white'
                 }`}
               >
                 {item.name}
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-antoree-green-light transform origin-left transition-transform duration-300 ${
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 ${isScrolled ? 'bg-antoree-green' : 'bg-antoree-green-light'} transform origin-left transition-transform duration-300 ${
                   isActivePath(item.href) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                 }`}></span>
               </Link>
@@ -73,12 +73,12 @@ const Header: React.FC = () => {
             <Link
               to="/favorites"
               className={`relative p-2 transition-colors duration-300 group ${
-                isScrolled ? 'text-antoree-green hover:text-antoree-green-light' : 'text-white hover:text-antoree-green-light'
+                isScrolled ? 'text-antoree-green hover:text-[#57F27E]' : 'text-white hover:text-antoree-green'
               }`}
               title="Yêu thích"
             >
               <HeartIcon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-antoree-purple text-white text-xs rounded-full flex items-center justify-center animate-pulse">
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#06261D] text-[#57F27E] text-xs rounded-full flex items-center justify-center animate-pulse">
                 3
               </span>
             </Link>
@@ -87,7 +87,7 @@ const Header: React.FC = () => {
             <Link
               to="/profile"
               className={`p-2 transition-colors duration-300 group ${
-                isScrolled ? 'text-antoree-green hover:text-antoree-green-light' : 'text-white hover:text-antoree-green-light'
+                isScrolled ? 'text-antoree-green hover:text-[#57F27E]' : 'text-white hover:text-antoree-green'
               }`}
               title="Hồ sơ"
             >
@@ -95,9 +95,7 @@ const Header: React.FC = () => {
             </Link>
 
             {/* CTA Button */}
-            <button className={`hidden md:block bg-gradient-to-r from-antoree-blue to-antoree-purple ${
-              isScrolled ? 'text-antoree-green' : 'text-white'
-            } font-medium px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}>
+            <button className={"*:hidden md:block bg-gradient-to-r from-[#06261D] to-[#57F27E] text-white font-medium px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"}>
               Đăng nhập
             </button>
 
@@ -105,7 +103,7 @@ const Header: React.FC = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`md:hidden p-2 transition-colors duration-300 ${
-                isScrolled ? 'text-antoree-green hover:text-antoree-green-light' : 'text-white hover:text-antoree-green-light'
+                isScrolled ? 'text-antoree-green hover:text-[#57F27E]' : 'text-white hover:text-antoree-green'
               }`}
             >
               {isMobileMenuOpen ? (
@@ -129,17 +127,17 @@ const Header: React.FC = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all duration-300 ${
                   isActivePath(item.href)
-                    ? 'text-antoree-green-light bg-white/10'
+                    ? 'text-antoree-green bg-white/10'
                     : isScrolled
-                      ? 'text-antoree-green hover:text-antoree-green-light hover:bg-white/5'
-                      : 'text-white hover:text-antoree-green-light hover:bg-white/5'
+                      ? 'text-antoree-green hover:text-[#57F27E] hover:bg-white/5'
+                      : 'text-white hover:text-antoree-green hover:bg-white/5'
                 }`}
               >
                 {item.name}
               </Link>
             ))}
             <div className="pt-4 border-t border-white/10">
-              <button className={`w-full bg-gradient-to-r from-antoree-blue to-antoree-purple ${
+              <button className={`w-full bg-gradient-to-r from-[#06261D] to-[#57F27E] ${
                 isScrolled ? 'text-antoree-green' : 'text-white'
               } font-medium py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300`}>
                 Đăng nhập

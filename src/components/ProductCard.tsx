@@ -78,7 +78,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
 
         {/* Category Badge */}
         <div className="absolute top-3 left-3">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-antoree-blue to-antoree-purple text-white shadow-md">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from- to-antoree-purple text-white shadow-md">
             {product.category}
           </span>
         </div>
@@ -143,7 +143,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
             </span>
             
             <div className="flex items-center text-sm text-antoree-green-light">
-              <span className="bg-antoree-green-light/20 px-2 py-1 rounded-full font-medium">
+              <span className="bg-antoree-green-light px-2 py-1 rounded-full font-medium">
                 -33%
               </span>
             </div>
@@ -156,7 +156,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
 
         {/* Action Button */}
         <button
-          className="w-full bg-gradient-to-r from-antoree-blue to-antoree-purple text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
+          className="w-full bg-gradient-to-r from-[#4951F2] to-[#C599F2] text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
           onClick={(e) => {
             e.stopPropagation();
             onViewDetail(product);
