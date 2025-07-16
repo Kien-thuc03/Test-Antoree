@@ -203,7 +203,7 @@ const FavoritesPage: React.FC = () => {
 
           {/* Additional Actions */}
           {favoriteProducts.length > 0 && (
-            <div className="mt-12 bg-gradient-to-r from-antoree-blue to-antoree-purple rounded-2xl p-8 text-center text-white animate-slide-in-up">
+            <div className="mt-12 bg-gradient-to-r from-[#2933F2] to-[#C599F2] rounded-2xl p-8 text-center text-white animate-slide-in-up">
               <h3 className="text-2xl font-bold mb-4 font-display">
                 Sẵn sàng bắt đầu học?
               </h3>

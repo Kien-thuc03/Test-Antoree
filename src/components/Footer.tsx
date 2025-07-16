@@ -13,11 +13,11 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-5">
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-3">
-              <div className="bg-gradient-to-r from-antoree-blue to-antoree-purple p-2 rounded-lg">
+              <div className="bg-gradient-to-r from-[#2933F2] to-[#C599F2] p-2 rounded-lg">
                 <AcademicCapIcon className="w-8 h-8 text-white" />
               </div>
               <div>
@@ -181,7 +181,7 @@ const Footer: React.FC = () => {
         </div>
         
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col lg:flex-row justify-between items-center">
+        <div className="border-t border-gray-700 mt-8 flex flex-col lg:flex-row justify-between items-center">
           <div className="flex items-center space-x-6 mb-4 lg:mb-0">
             <p className="text-gray-400 text-sm">© 2025 Antoree. Tất cả quyền được bảo lưu.</p>
             <div className="flex items-center space-x-2 text-gray-400">

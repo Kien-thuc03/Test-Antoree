@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Product } from '../types';
-import { HeartIcon, StarIcon, PlayIcon, ClockIcon, UserGroupIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, StarIcon, PlayIcon } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 import { formatCurrency } from '../utils/formatters';
 
@@ -97,20 +97,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
             <HeartIcon className="w-5 h-5" />
           )}
         </button>
-
-        {/* Quick Info */}
-        <div className="absolute bottom-3 left-3 right-3 text-white text-sm">
-          <div className="flex items-center space-x-4">
-            <div className="flex items-center bg-black/30 px-2 py-1 rounded-full">
-              <ClockIcon className="w-4 h-4 mr-1" />
-              <span>2h 30m</span>
-            </div>
-            <div className="flex items-center bg-black/30 px-2 py-1 rounded-full">
-              <UserGroupIcon className="w-4 h-4 mr-1" />
-              <span>156</span>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Content */}
@@ -142,7 +128,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
               {formatCurrency(product.price)}
             </span>
             
-            <div className="flex items-center text-sm text-antoree-green-light">
+            <div className="flex items-center text-sm text-antoree-green">
               <span className="bg-antoree-green-light px-2 py-1 rounded-full font-medium">
                 -33%
               </span>

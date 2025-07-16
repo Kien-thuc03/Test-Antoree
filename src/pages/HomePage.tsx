@@ -83,7 +83,7 @@ const HomePage: React.FC = () => {
                 />
                 <button 
                   type="submit" 
-                  className="bg-gradient-to-r from-antoree-blue to-antoree-purple text-white font-medium px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-xl transform hover:scale-105 flex items-center space-x-2"
+                  className="bg-gradient-to-r from-[#2933F2] to-[#C599F2] text-white font-medium px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-xl transform hover:scale-105 flex items-center space-x-2"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -160,7 +160,7 @@ const HomePage: React.FC = () => {
           
           {/* CTA Section */}
           <section className="mb-16 animate-slide-in-up">
-            <div className="bg-gradient-to-r from-antoree-blue to-antoree-purple rounded-3xl overflow-hidden shadow-lifted">
+            <div className="bg-gradient-to-r from-[#2933F2] to-[#C599F2] rounded-3xl overflow-hidden shadow-lifted">
               <div className="p-8 md:p-12 text-center">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-display">
                   Bắt đầu hành trình học tập ngay hôm nay

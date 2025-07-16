@@ -73,12 +73,12 @@ const Header: React.FC = () => {
             <Link
               to="/favorites"
               className={`relative p-2 transition-colors duration-300 group ${
-                isScrolled ? 'text-antoree-green hover:text-[#57F27E]' : 'text-white hover:text-antoree-green'
+                isScrolled ? 'text-antoree-green hover:text-antoree-green-light' : 'text-white hover:text-antoree-green'
               }`}
               title="Yêu thích"
             >
               <HeartIcon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#06261D] text-[#57F27E] text-xs rounded-full flex items-center justify-center animate-pulse">
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-antoree-green text-antoree-green-light text-xs rounded-full flex items-center justify-center animate-pulse">
                 3
               </span>
             </Link>
@@ -87,7 +87,7 @@ const Header: React.FC = () => {
             <Link
               to="/profile"
               className={`p-2 transition-colors duration-300 group ${
-                isScrolled ? 'text-antoree-green hover:text-[#57F27E]' : 'text-white hover:text-antoree-green'
+                isScrolled ? 'text-antoree-green hover:text-antoree-green-light' : 'text-white hover:text-antoree-green'
               }`}
               title="Hồ sơ"
             >
@@ -103,7 +103,7 @@ const Header: React.FC = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`md:hidden p-2 transition-colors duration-300 ${
-                isScrolled ? 'text-antoree-green hover:text-[#57F27E]' : 'text-white hover:text-antoree-green'
+                isScrolled ? 'text-antoree-green hover:text-antoree-green-light' : 'text-white hover:text-antoree-green'
               }`}
             >
               {isMobileMenuOpen ? (
@@ -129,7 +129,7 @@ const Header: React.FC = () => {
                   isActivePath(item.href)
                     ? 'text-antoree-green bg-white/10'
                     : isScrolled
-                      ? 'text-antoree-green hover:text-[#57F27E] hover:bg-white/5'
+                      ? 'text-antoree-green hover:text-antoree-green-light hover:bg-white/5'
                       : 'text-white hover:text-antoree-green hover:bg-white/5'
                 }`}
               >
