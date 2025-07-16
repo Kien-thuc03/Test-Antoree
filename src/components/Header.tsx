@@ -29,7 +29,7 @@ const Header: React.FC = () => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-antoree-green/95 backdrop-blur-sm shadow-lg' 
+        ? 'bg-antoree-green/55 backdrop-blur-sm shadow-lg' 
         : 'bg-antoree-green'
     }`}>
       <div className="container mx-auto px-4">
@@ -54,7 +54,9 @@ const Header: React.FC = () => {
                 className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 group ${
                   isActivePath(item.href)
                     ? 'text-antoree-green-light'
-                    : 'text-white hover:text-antoree-green-light'
+                    : isScrolled 
+                      ? 'text-antoree-green hover:text-antoree-green-light' 
+                      : 'text-white hover:text-antoree-green-light'
                 }`}
               >
                 {item.name}
@@ -70,7 +72,9 @@ const Header: React.FC = () => {
             {/* Favorites */}
             <Link
               to="/favorites"
-              className="relative p-2 text-white hover:text-antoree-green-light transition-colors duration-300 group"
+              className={`relative p-2 transition-colors duration-300 group ${
+                isScrolled ? 'text-antoree-green hover:text-antoree-green-light' : 'text-white hover:text-antoree-green-light'
+              }`}
               title="Yêu thích"
             >
               <HeartIcon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
@@ -82,7 +86,9 @@ const Header: React.FC = () => {
             {/* Profile */}
             <Link
               to="/profile"
-              className="p-2 text-white hover:text-antoree-green-light transition-colors duration-300 group"
+              className={`p-2 transition-colors duration-300 group ${
+                isScrolled ? 'text-antoree-green hover:text-antoree-green-light' : 'text-white hover:text-antoree-green-light'
+              }`}
               title="Hồ sơ"
             >
               <UserIcon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
@@ -96,7 +102,9 @@ const Header: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-white hover:text-antoree-green-light transition-colors duration-300"
+              className={`md:hidden p-2 transition-colors duration-300 ${
+                isScrolled ? 'text-antoree-green hover:text-antoree-green-light' : 'text-white hover:text-antoree-green-light'
+              }`}
             >
               {isMobileMenuOpen ? (
                 <XMarkIcon className="w-6 h-6" />
@@ -120,7 +128,9 @@ const Header: React.FC = () => {
                 className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all duration-300 ${
                   isActivePath(item.href)
                     ? 'text-antoree-green-light bg-white/10'
-                    : 'text-white hover:text-antoree-green-light hover:bg-white/5'
+                    : isScrolled
+                      ? 'text-antoree-green hover:text-antoree-green-light hover:bg-white/5'
+                      : 'text-white hover:text-antoree-green-light hover:bg-white/5'
                 }`}
               >
                 {item.name}

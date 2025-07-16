@@ -99,7 +99,7 @@ const HomePage: React.FC = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 max-w-lg mx-auto">
+            <div className="grid grid-cols-3 gap-8 max-w-lg mx-auto mb-14">
               <div className="text-center">
                 <div className="text-3xl font-bold text-antoree-green-light mb-2">10K+</div>
                 <div className="text-gray-300 text-sm">Khóa học</div>

@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useProductContext } from '../hooks/useProductContext';
 import { categories } from '../mocks/productData';
-import { FunnelIcon, MagnifyingGlassIcon, AdjustmentsHorizontalIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon } from '@heroicons/react/24/outline';
 
 const FilterBar: React.FC = () => {
   const { filterOptions, setFilterOptions } = useProductContext();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isPriceDropdownOpen, setIsPriceDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const handlePriceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handlePriceChange = (value: string) => {
     setFilterOptions({
       ...filterOptions,
-      priceRange: e.target.value as 'all' | 'under1m' | '1m-5m' | 'over5m'
+      priceRange: value as 'all' | 'under1m' | '1m-5m' | 'over5m'
     });
+    setIsPriceDropdownOpen(false);
   };
 
   const handleCategoryChange = (category: string) => {
@@ -22,132 +23,191 @@ const FilterBar: React.FC = () => {
     });
   };
 
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Tìm kiếm:', searchQuery);
-    // Implement search logic here
+  // Đóng dropdown khi click ra ngoài
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsPriceDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const getPriceLabel = (value: string) => {
+    switch (value) {
+      case 'under1m': return 'Dưới 1.000.000đ';
+      case '1m-5m': return '1.000.000đ - 5.000.000đ';
+      case 'over5m': return 'Trên 5.000.000đ';
+      default: return 'Tất cả';
+    }
+  };
+
+  const getMobilePriceLabel = (value: string) => {
+    switch (value) {
+      case 'under1m': return 'Dưới 1tr';
+      case '1m-5m': return '1tr-5tr';
+      case 'over5m': return 'Trên 5tr';
+      default: return 'Tất cả';
+    }
   };
 
   return (
-    <div className="sticky top-20 z-40 bg-white shadow-md border-b border-gray-200 animate-slide-in-down">
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex flex-col lg:flex-row items-center gap-4">
-          {/* Search Bar */}
-          <div className="flex-1 max-w-md">
-            <form onSubmit={handleSearchSubmit} className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <MagnifyingGlassIcon className="h-5 w-5 text-gray-500" />
-              </div>
-              <input
-                type="text"
-                placeholder="Tìm kiếm khóa học..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white border-2 border-gray-200 rounded-xl focus:border-antoree-blue focus:ring-2 focus:ring-antoree-blue/20 transition-all duration-300 outline-none shadow-sm hover:shadow-md"
-              />
-            </form>
+    <div className="sticky top-20 z-40 bg-white border-b border-gray-100 animate-slide-in-down">
+      <div className="container mx-auto px-4 py-3">
+        {/* Desktop View */}
+        <div className="hidden md:flex flex-wrap items-center justify-between">
+          {/* Category Pills */}
+          <div className="flex items-center flex-wrap gap-2 my-4">
+            {categories.slice(0, 6).map((category) => (
+              <button
+                key={category}
+                onClick={() => handleCategoryChange(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  filterOptions.category === category
+                    ? 'bg-[#4951F2] text-white'
+                    : 'bg-white text-[#06261D] border border-gray-200 hover:border-[#4951F2]/30'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+            {categories.length > 6 && (
+              <button 
+                className="px-4 py-2 rounded-full text-sm font-medium text-[#C599F2] border border-[#C599F2]/30 hover:bg-[#C599F2]/5"
+              >
+                +{categories.length - 6} Khác
+              </button>
+            )}
           </div>
 
-          {/* Mobile Filter Toggle */}
-          <button
-            onClick={() => setIsFilterOpen(!isFilterOpen)}
-            className="lg:hidden flex items-center space-x-2 px-4 py-2 bg-antoree-green/5 rounded-lg hover:bg-antoree-green/10 transition-colors duration-300"
-          >
-            <AdjustmentsHorizontalIcon className="w-5 h-5 text-antoree-green" />
-            <span className="font-medium text-antoree-green">Lọc</span>
-          </button>
-
-          {/* Desktop Filters */}
-          <div className="hidden lg:flex items-center space-x-6">
-            {/* Category Filter */}
-            <div className="flex items-center space-x-3">
-              <FunnelIcon className="w-5 h-5 text-antoree-green" />
-              <span className="text-sm font-medium text-antoree-green">Danh mục:</span>
-              <div className="flex items-center space-x-2">
-                {categories.slice(0, 4).map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => handleCategoryChange(category)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
-                      filterOptions.category === category
-                        ? 'bg-gradient-to-r from-antoree-blue to-antoree-purple text-white shadow-md'
-                        : 'bg-antoree-green/5 text-antoree-green hover:bg-antoree-green/10'
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
-                {categories.length > 4 && (
-                  <button className="px-4 py-2 rounded-full text-sm font-medium bg-antoree-green/5 text-antoree-green hover:bg-antoree-green/10 transition-all duration-300">
-                    +{categories.length - 4}
-                  </button>
-                )}
-              </div>
-            </div>
-
-            {/* Price Filter */}
-            <div className="flex items-center space-x-3">
-              <span className="text-sm font-medium text-antoree-green">Giá:</span>
-              <select
-                value={filterOptions.priceRange}
-                onChange={handlePriceChange}
-                className="bg-white border-2 border-gray-200 text-antoree-green text-sm rounded-lg focus:ring-2 focus:ring-antoree-blue focus:border-antoree-blue py-2 px-3 transition-all duration-300 outline-none shadow-sm hover:shadow-md"
-                aria-label="Lọc theo khoảng giá"
+          {/* Price Filter - Custom Dropdown */}
+          <div className="relative ml-auto" ref={dropdownRef}>
+            <div className="flex items-center">
+              <span className="text-sm font-medium text-[#06261D] mr-2">Giá:</span>
+              <button 
+                className="flex items-center justify-between bg-white border border-gray-200 text-[#06261D] text-sm rounded-lg py-2 px-3 min-w-[160px] hover:border-[#4951F2]/30 focus:outline-none"
+                onClick={() => setIsPriceDropdownOpen(!isPriceDropdownOpen)}
               >
-                <option value="all">Tất cả</option>
-                <option value="under1m">Dưới 1.000.000đ</option>
-                <option value="1m-5m">1.000.000đ - 5.000.000đ</option>
-                <option value="over5m">Trên 5.000.000đ</option>
-              </select>
+                <span>{getPriceLabel(filterOptions.priceRange)}</span>
+                <ChevronDownIcon className={`w-4 h-4 ml-2 transition-transform ${isPriceDropdownOpen ? 'transform rotate-180' : ''}`} />
+              </button>
             </div>
+            
+            {isPriceDropdownOpen && (
+              <div className="absolute right-0 mt-1 w-full min-w-[200px] bg-white border border-gray-200 rounded-lg shadow-lg z-10">
+                <div className="py-1">
+                  <button 
+                    className={`w-full text-left px-4 py-2 hover:bg-gray-50 cursor-pointer ${filterOptions.priceRange === 'all' ? 'text-[#4951F2] font-medium' : 'text-[#06261D]'}`}
+                    onClick={() => handlePriceChange('all')}
+                  >
+                    Tất cả
+                  </button>
+                  <button 
+                    className={`w-full text-left px-4 py-2 hover:bg-gray-50 cursor-pointer ${filterOptions.priceRange === 'under1m' ? 'text-[#4951F2] font-medium' : 'text-[#06261D]'}`}
+                    onClick={() => handlePriceChange('under1m')}
+                  >
+                    Dưới 1.000.000đ
+                  </button>
+                  <button 
+                    className={`w-full text-left px-4 py-2 hover:bg-gray-50 cursor-pointer ${filterOptions.priceRange === '1m-5m' ? 'text-[#4951F2] font-medium' : 'text-[#06261D]'}`}
+                    onClick={() => handlePriceChange('1m-5m')}
+                  >
+                    1.000.000đ - 5.000.000đ
+                  </button>
+                  <button 
+                    className={`w-full text-left px-4 py-2 hover:bg-gray-50 cursor-pointer ${filterOptions.priceRange === 'over5m' ? 'text-[#4951F2] font-medium' : 'text-[#06261D]'}`}
+                    onClick={() => handlePriceChange('over5m')}
+                  >
+                    Trên 5.000.000đ
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Mobile Filter Panel */}
-        <div className={`lg:hidden mt-4 transition-all duration-300 overflow-hidden ${
-          isFilterOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}>
-          <div className="space-y-4 p-4 bg-antoree-green/5 rounded-lg">
-            {/* Mobile Categories */}
-            <div>
-              <h3 className="text-sm font-medium text-antoree-green mb-3">Danh mục:</h3>
-              <div className="flex flex-wrap gap-2">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => handleCategoryChange(category)}
-                    className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                      filterOptions.category === category
-                        ? 'bg-gradient-to-r from-antoree-blue to-antoree-purple text-white shadow-md'
-                        : 'bg-white text-antoree-green hover:bg-antoree-green/10 border border-antoree-green/20'
-                    }`}
+        {/* Mobile View */}
+        <div className="md:hidden flex overflow-x-auto items-center pb-2 gap-2 hide-scrollbar">
+          {categories.slice(0, 5).map((category) => (
+            <button
+              key={category}
+              onClick={() => handleCategoryChange(category)}
+              className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap flex-shrink-0 ${
+                filterOptions.category === category
+                  ? 'bg-[#4951F2] text-white'
+                  : 'bg-white text-[#06261D] border border-gray-200'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+          <button className="px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap flex-shrink-0 text-[#C599F2] border border-[#C599F2]/30">
+            +{categories.length - 5} Khác
+          </button>
+          
+          {/* Mobile Price Filter - Custom Dropdown */}
+          <div className="ml-auto flex-shrink-0 relative">
+            <button
+              onClick={() => setIsPriceDropdownOpen(!isPriceDropdownOpen)}
+              className="flex items-center space-x-1 bg-white border border-gray-200 text-[#06261D] text-xs rounded-full py-1.5 px-3"
+              aria-label="Lọc theo giá"
+            >
+              <span>{getMobilePriceLabel(filterOptions.priceRange)}</span>
+              <ChevronDownIcon className={`w-3 h-3 transition-transform ${isPriceDropdownOpen ? 'transform rotate-180' : ''}`} />
+            </button>
+            
+            {isPriceDropdownOpen && (
+              <div className="absolute right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 min-w-[120px]">
+                <div className="py-1">
+                  <button 
+                    className={`w-full text-left px-3 py-2 text-xs hover:bg-gray-50 cursor-pointer ${filterOptions.priceRange === 'all' ? 'text-[#4951F2] font-medium' : 'text-[#06261D]'}`}
+                    onClick={() => handlePriceChange('all')}
                   >
-                    {category}
+                    Tất cả
                   </button>
-                ))}
+                  <button 
+                    className={`w-full text-left px-3 py-2 text-xs hover:bg-gray-50 cursor-pointer ${filterOptions.priceRange === 'under1m' ? 'text-[#4951F2] font-medium' : 'text-[#06261D]'}`}
+                    onClick={() => handlePriceChange('under1m')}
+                  >
+                    Dưới 1tr
+                  </button>
+                  <button 
+                    className={`w-full text-left px-3 py-2 text-xs hover:bg-gray-50 cursor-pointer ${filterOptions.priceRange === '1m-5m' ? 'text-[#4951F2] font-medium' : 'text-[#06261D]'}`}
+                    onClick={() => handlePriceChange('1m-5m')}
+                  >
+                    1tr - 5tr
+                  </button>
+                  <button 
+                    className={`w-full text-left px-3 py-2 text-xs hover:bg-gray-50 cursor-pointer ${filterOptions.priceRange === 'over5m' ? 'text-[#4951F2] font-medium' : 'text-[#06261D]'}`}
+                    onClick={() => handlePriceChange('over5m')}
+                  >
+                    Trên 5tr
+                  </button>
+                </div>
               </div>
-            </div>
-
-            {/* Mobile Price Filter */}
-            <div>
-              <h3 className="text-sm font-medium text-antoree-green mb-3">Khoảng giá:</h3>
-              <select
-                value={filterOptions.priceRange}
-                onChange={handlePriceChange}
-                className="w-full bg-white border-2 border-gray-200 text-antoree-green text-sm rounded-lg focus:ring-2 focus:ring-antoree-blue focus:border-antoree-blue py-3 px-4 transition-all duration-300 outline-none"
-                aria-label="Lọc theo khoảng giá"
-              >
-                <option value="all">Tất cả giá</option>
-                <option value="under1m">Dưới 1.000.000đ</option>
-                <option value="1m-5m">1.000.000đ - 5.000.000đ</option>
-                <option value="over5m">Trên 5.000.000đ</option>
-              </select>
-            </div>
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 };
+
+// Thêm style cho scrollbar
+const style = document.createElement('style');
+style.textContent = `
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+`;
+document.head.appendChild(style);
 
 export default FilterBar; 
