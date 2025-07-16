@@ -154,7 +154,7 @@ const FilterBar: React.FC = () => {
           </button>
           
           {/* Mobile Price Filter - Custom Dropdown */}
-          <div className="ml-auto flex-shrink-0 relative">
+          <div className="ml-auto flex-shrink-0 relative" ref={dropdownRef}>
             <button
               onClick={() => setIsPriceDropdownOpen(!isPriceDropdownOpen)}
               className="flex items-center space-x-1 bg-white border border-gray-200 text-[#06261D] text-xs rounded-full py-1.5 px-3"
@@ -165,7 +165,7 @@ const FilterBar: React.FC = () => {
             </button>
             
             {isPriceDropdownOpen && (
-              <div className="absolute right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-10 min-w-[120px]">
+              <div className="absolute right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 min-w-[150px] max-w-[200px]">
                 <div className="py-1">
                   <button 
                     className={`w-full text-left px-3 py-2 text-xs hover:bg-gray-50 cursor-pointer ${filterOptions.priceRange === 'all' ? 'text-[#4951F2] font-medium' : 'text-[#06261D]'}`}

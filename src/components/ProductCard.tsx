@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Product } from '../types';
-import { HeartIcon, StarIcon, PlayIcon } from '@heroicons/react/24/outline';
+import { HeartIcon, StarIcon } from '@heroicons/react/24/outline';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/24/solid';
 import { formatCurrency } from '../utils/formatters';
 
@@ -62,23 +62,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
         <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent transition-opacity duration-300 ${
           isHovered ? 'opacity-100' : 'opacity-70'
         }`}>
-          {/* Play Button */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <button 
-              className={`bg-white/30 backdrop-blur-sm rounded-full p-4 transform transition-all duration-300 ${
-                isHovered ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
-              }`}
-              aria-label="Xem trước khóa học"
-              title="Xem trước khóa học"
-            >
-              <PlayIcon className="w-8 h-8 text-white" />
-            </button>
-          </div>
         </div>
 
         {/* Category Badge */}
         <div className="absolute top-3 left-3">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from- to-antoree-purple text-white shadow-md">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-[#2933F2] to-[#C599F2] text-white shadow-md">
             {product.category}
           </span>
         </div>

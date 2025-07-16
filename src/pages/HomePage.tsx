@@ -73,17 +73,17 @@ const HomePage: React.FC = () => {
             </p>
             
             <div className="relative max-w-2xl mx-auto mb-16">
-              <form onSubmit={handleSearch} className="flex items-center glass rounded-2xl p-2 shadow-lifted">
+              <form onSubmit={handleSearch} className="flex flex-col sm:flex-row items-center glass rounded-2xl p-2 shadow-lifted">
                 <input 
                   type="text" 
                   placeholder="Tìm kiếm khóa học, giáo viên..." 
-                  className="flex-1 bg-transparent text-white placeholder-gray-300 px-6 py-4 rounded-l-2xl focus:outline-none text-lg"
+                  className="flex-1 bg-transparent text-white placeholder-gray-300 px-6 py-4 rounded-2xl sm:rounded-l-2xl focus:outline-none text-lg w-full"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
                 <button 
                   type="submit" 
-                  className="bg-gradient-to-r from-[#2933F2] to-[#C599F2] text-white font-medium px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-xl transform hover:scale-105 flex items-center space-x-2"
+                  className="text-white font-medium px-8 py-4 rounded-xl transition-all duration-300 hover:shadow-xl transform hover:scale-105 flex items-center justify-center space-x-2 w-full sm:w-auto mt-2 sm:mt-0 bg-antoree-green-light/30 backdrop-blur-sm mobile-search-button sm-button-fix"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
