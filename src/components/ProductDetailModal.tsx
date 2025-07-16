@@ -77,13 +77,13 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     <div className="absolute top-2 right-2">
                       <button
                         onClick={() => onToggleFavorite(product.id)}
-                        className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-opacity-100 transition-colors"
+                        className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-opacity-100 transition-all duration-300"
                         aria-label={product.isFavorite ? "Bỏ yêu thích" : "Yêu thích"}
                       >
                         {product.isFavorite ? (
                           <HeartIconSolid className="w-6 h-6 text-antoree-purple" />
                         ) : (
-                          <HeartIcon className="w-6 h-6 text-gray-600" />
+                          <HeartIcon className="w-6 h-6 text-gray-600 hover:text-antoree-purple" />
                         )}
                       </button>
                     </div>

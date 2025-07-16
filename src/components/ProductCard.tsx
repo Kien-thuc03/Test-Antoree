@@ -75,7 +75,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
         <button
           onClick={handleFavoriteClick}
           className={`absolute top-3 right-3 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110 ${
-            product.isFavorite ? 'text-antoree-purple' : 'text-gray-600'
+            product.isFavorite ? 'text-antoree-purple' : 'text-gray-600 hover:text-antoree-purple'
           }`}
           aria-label={product.isFavorite ? "Bỏ yêu thích" : "Yêu thích"}
         >

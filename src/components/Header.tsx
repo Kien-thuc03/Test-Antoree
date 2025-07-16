@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HeartIcon, UserIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import logo from '../assets/images/logo_withtagline.svg';
+import { useProductContext } from '../hooks/useProductContext';
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { favoriteProducts } = useProductContext();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -78,9 +80,11 @@ const Header: React.FC = () => {
               title="Yêu thích"
             >
               <HeartIcon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-antoree-green text-antoree-green-light text-xs rounded-full flex items-center justify-center animate-pulse">
-                3
-              </span>
+              {favoriteProducts.length > 0 && (
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-antoree-green text-antoree-green-light text-xs rounded-full flex items-center justify-center animate-pulse">
+                  {favoriteProducts.length}
+                </span>
+              )}
             </Link>
 
             {/* Profile */}
@@ -95,7 +99,7 @@ const Header: React.FC = () => {
             </Link>
 
             {/* CTA Button */}
-            <button className={"*:hidden md:block bg-gradient-to-r from-[#06261D] to-[#57F27E] text-white font-medium px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"}>
+            <button className={"hidden md:block bg-gradient-to-r from-[#06261D] to-[#57F27E] text-white font-medium px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"}>
               Đăng nhập
             </button>
 

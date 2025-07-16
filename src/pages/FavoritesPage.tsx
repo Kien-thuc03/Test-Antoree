@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
 import ProductDetailModal from '../components/ProductDetailModal';
 import { useProductContext } from '../hooks/useProductContext';
-import { HeartIcon, SparklesIcon, FunnelIcon } from '@heroicons/react/24/solid';
+import { HeartIcon, SparklesIcon } from '@heroicons/react/24/solid';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import type { Product } from '../types';
 import { Link } from 'react-router-dom';
@@ -103,124 +103,52 @@ const FavoritesPage: React.FC = () => {
                       onChange={(e) => setSearchQuery(e.target.value)}
                     />
                   </div>
-                  
-                  <div className="flex items-center space-x-4">
-                    <div className="flex items-center space-x-2">
-                      <FunnelIcon className="w-5 h-5 text-gray-500" />
-                      <span className="text-sm font-medium text-gray-700">Sắp xếp:</span>
-                    </div>
+                  <div className="w-full md:w-auto">
                     <select
                       value={sortBy}
                       onChange={(e) => setSortBy(e.target.value)}
-                      className="bg-white border-2 border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-2 focus:ring-antoree-blue focus:border-antoree-blue py-2 px-3 transition-all duration-300 outline-none"
+                      className="w-full md:w-auto px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-antoree-blue focus:ring-2 focus:ring-antoree-blue/20 transition-all duration-300 outline-none"
                       title="Sắp xếp khóa học"
-                      aria-label="Sắp xếp khóa học theo"
+                      aria-label="Sắp xếp khóa học"
                     >
-                      <option value="name">Tên A-Z</option>
-                      <option value="price">Giá thấp đến cao</option>
-                      <option value="rating">Đánh giá cao nhất</option>
+                      <option value="name">Sắp xếp theo tên</option>
+                      <option value="price">Sắp xếp theo giá</option>
+                      <option value="rating">Sắp xếp theo đánh giá</option>
                     </select>
                   </div>
                 </div>
-
-                {searchQuery && (
-                  <div className="mt-4 flex items-center text-sm text-gray-600">
-                    <span>Tìm thấy {filteredProducts.length} kết quả cho "{searchQuery}"</span>
-                    {filteredProducts.length !== favoriteProducts.length && (
-                      <button
-                        onClick={() => setSearchQuery('')}
-                        className="ml-2 text-antoree-blue hover:text-antoree-purple font-medium"
-                      >
-                        Xóa bộ lọc
-                      </button>
-                    )}
-                  </div>
-                )}
               </div>
 
-              {/* Products Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 animate-slide-in-up">
-                {sortedProducts.map((product, index) => (
-                  <div 
+              {/* Favorites Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                {sortedProducts.map((product) => (
+                  <ProductCard
                     key={product.id}
-                    className={`animate-scale-in delay-${index % 4}`}
-                  >
-                    <ProductCard
-                      product={product}
-                      onToggleFavorite={toggleFavorite}
-                      onViewDetail={handleViewDetail}
-                    />
-                  </div>
+                    product={product}
+                    onViewDetail={handleViewDetail}
+                    onToggleFavorite={toggleFavorite}
+                  />
                 ))}
               </div>
-
-              {filteredProducts.length === 0 && searchQuery && (
-                <div className="text-center py-16 bg-antoree-green/5 rounded-2xl shadow-soft animate-fade-in">
-                  <div className="inline-flex items-center justify-center w-16 h-16 mb-6 bg-antoree-purple/10 rounded-full">
-                    <MagnifyingGlassIcon className="w-8 h-8 text-antoree-purple" />
-                  </div>
-                  <h2 className="text-xl font-semibold text-antoree-green mb-2">Không tìm thấy kết quả</h2>
-                  <p className="text-gray-600 mb-6 max-w-md mx-auto">
-                    Không có khóa học nào phù hợp với từ khóa "{searchQuery}". Thử tìm kiếm với từ khóa khác.
-                  </p>
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="btn-primary"
-                  >
-                    Xóa bộ lọc
-                  </button>
-                </div>
-              )}
             </>
           ) : (
-            <div className="text-center py-16 bg-antoree-green/5 rounded-2xl shadow-soft animate-fade-in">
-              <div className="inline-flex items-center justify-center w-20 h-20 mb-6 bg-gradient-to-r from-antoree-purple/20 to-antoree-blue/20 rounded-full">
-                <HeartIcon className="w-10 h-10 text-antoree-purple" />
+            <div className="text-center py-16 animate-fade-in">
+              <div className="inline-flex justify-center items-center w-24 h-24 rounded-full bg-antoree-purple/10 mb-6">
+                <HeartIcon className="w-12 h-12 text-antoree-purple" />
               </div>
-              <h2 className="text-2xl font-semibold text-antoree-green mb-4 font-display">
-                Chưa có khóa học yêu thích
-              </h2>
-              <p className="text-gray-600 mb-8 max-w-md mx-auto leading-relaxed">
-                Bạn chưa thêm khóa học nào vào danh sách yêu thích. Khám phá các khóa học tuyệt vời và lưu lại những khóa học bạn quan tâm.
+              <h2 className="text-2xl font-bold text-antoree-green mb-4">Chưa có khóa học yêu thích</h2>
+              <p className="text-gray-600 mb-8 max-w-md mx-auto">
+                Bạn chưa thêm khóa học nào vào danh sách yêu thích. Hãy khám phá các khóa học và thêm vào danh sách để xem lại sau.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  to="/" 
-                  className="btn-primary"
-                >
-                  <SparklesIcon className="w-5 h-5 mr-2" />
-                  Khám phá khóa học
-                </Link>
-                <Link 
-                  to="/" 
-                  className="btn-secondary"
-                >
-                  Xem khóa học phổ biến
-                </Link>
-              </div>
-            </div>
-          )}
-
-          {/* Additional Actions */}
-          {favoriteProducts.length > 0 && (
-            <div className="mt-12 bg-gradient-to-r from-[#2933F2] to-[#C599F2] rounded-2xl p-8 text-center text-white animate-slide-in-up">
-              <h3 className="text-2xl font-bold mb-4 font-display">
-                Sẵn sàng bắt đầu học?
-              </h3>
-              <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-                Bạn đã có {favoriteProducts.length} khóa học trong danh sách yêu thích. Hãy bắt đầu hành trình học tập ngay hôm nay!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-antoree-blue font-medium px-8 py-3 rounded-lg hover:bg-gray-50 transition-all duration-300 transform hover:scale-105">
-                  Tạo lộ trình học tập
-                </button>
-                <Link
-                  to="/"
-                  className="border-2 border-white text-white font-medium px-8 py-3 rounded-lg hover:bg-white hover:text-antoree-blue transition-all duration-300"
-                >
-                  Khám phá thêm khóa học
-                </Link>
-              </div>
+              <Link 
+                to="/" 
+                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-antoree-blue to-antoree-purple text-white font-medium rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              >
+                <span>Khám phá khóa học</span>
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </Link>
             </div>
           )}
         </div>
