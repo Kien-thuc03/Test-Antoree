@@ -53,12 +53,12 @@ const Header: React.FC = () => {
                 to={item.href}
                 className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 group ${
                   isActivePath(item.href)
-                    ? 'text-brand-light'
-                    : 'text-white hover:text-brand-light'
+                    ? 'text-antoree-green-light'
+                    : 'text-white hover:text-antoree-green-light'
                 }`}
               >
                 {item.name}
-                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-brand-light transform origin-left transition-transform duration-300 ${
+                <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-antoree-green-light transform origin-left transition-transform duration-300 ${
                   isActivePath(item.href) ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                 }`}></span>
               </Link>
@@ -70,11 +70,11 @@ const Header: React.FC = () => {
             {/* Favorites */}
             <Link
               to="/favorites"
-              className="relative p-2 text-white hover:text-brand-light transition-colors duration-300 group"
+              className="relative p-2 text-white hover:text-antoree-green-light transition-colors duration-300 group"
               title="Yêu thích"
             >
               <HeartIcon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center animate-pulse">
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-antoree-purple text-white text-xs rounded-full flex items-center justify-center animate-pulse">
                 3
               </span>
             </Link>
@@ -82,21 +82,21 @@ const Header: React.FC = () => {
             {/* Profile */}
             <Link
               to="/profile"
-              className="p-2 text-white hover:text-brand-light transition-colors duration-300 group"
+              className="p-2 text-white hover:text-antoree-green-light transition-colors duration-300 group"
               title="Hồ sơ"
             >
               <UserIcon className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
             </Link>
 
             {/* CTA Button */}
-            <button className="hidden md:block bg-gradient-to-r from-brand-blue to-brand-purple text-white font-medium px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+            <button className="hidden md:block bg-gradient-to-r from-antoree-blue to-antoree-purple text-white font-medium px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
               Đăng nhập
             </button>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-white hover:text-brand-light transition-colors duration-300"
+              className="md:hidden p-2 text-white hover:text-antoree-green-light transition-colors duration-300"
             >
               {isMobileMenuOpen ? (
                 <XMarkIcon className="w-6 h-6" />
@@ -119,15 +119,15 @@ const Header: React.FC = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`block px-4 py-3 text-sm font-medium rounded-lg transition-all duration-300 ${
                   isActivePath(item.href)
-                    ? 'text-brand-light bg-white/10'
-                    : 'text-white hover:text-brand-light hover:bg-white/5'
+                    ? 'text-antoree-green-light bg-white/10'
+                    : 'text-white hover:text-antoree-green-light hover:bg-white/5'
                 }`}
               >
                 {item.name}
               </Link>
             ))}
             <div className="pt-4 border-t border-white/10">
-              <button className="w-full bg-gradient-to-r from-brand-blue to-brand-purple text-white font-medium py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+              <button className="w-full bg-gradient-to-r from-antoree-blue to-antoree-purple text-white font-medium py-3 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                 Đăng nhập
               </button>
             </div>

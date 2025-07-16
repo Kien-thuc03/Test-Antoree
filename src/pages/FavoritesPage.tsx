@@ -44,7 +44,7 @@ const FavoritesPage: React.FC = () => {
   });
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
       
       <main className="flex-grow pt-20">
@@ -91,7 +91,7 @@ const FavoritesPage: React.FC = () => {
           {favoriteProducts.length > 0 ? (
             <>
               {/* Search and Filter Bar */}
-              <div className="bg-white rounded-2xl shadow-soft p-6 mb-8 animate-slide-in-up">
+              <div className="bg-antoree-green/5 rounded-2xl shadow-soft p-6 mb-8 animate-slide-in-up">
                 <div className="flex flex-col md:flex-row gap-4 items-center">
                   <div className="flex-1 relative">
                     <MagnifyingGlassIcon className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -129,7 +129,7 @@ const FavoritesPage: React.FC = () => {
                     {filteredProducts.length !== favoriteProducts.length && (
                       <button
                         onClick={() => setSearchQuery('')}
-                        className="ml-2 text-brand-blue hover:text-brand-purple font-medium"
+                        className="ml-2 text-antoree-blue hover:text-antoree-purple font-medium"
                       >
                         Xóa bộ lọc
                       </button>
@@ -155,11 +155,11 @@ const FavoritesPage: React.FC = () => {
               </div>
 
               {filteredProducts.length === 0 && searchQuery && (
-                <div className="text-center py-16 bg-white rounded-2xl shadow-soft animate-fade-in">
-                  <div className="inline-flex items-center justify-center w-16 h-16 mb-6 bg-gray-100 rounded-full">
-                    <MagnifyingGlassIcon className="w-8 h-8 text-gray-400" />
+                <div className="text-center py-16 bg-antoree-green/5 rounded-2xl shadow-soft animate-fade-in">
+                  <div className="inline-flex items-center justify-center w-16 h-16 mb-6 bg-antoree-purple/10 rounded-full">
+                    <MagnifyingGlassIcon className="w-8 h-8 text-antoree-purple" />
                   </div>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-2">Không tìm thấy kết quả</h2>
+                  <h2 className="text-xl font-semibold text-antoree-green mb-2">Không tìm thấy kết quả</h2>
                   <p className="text-gray-600 mb-6 max-w-md mx-auto">
                     Không có khóa học nào phù hợp với từ khóa "{searchQuery}". Thử tìm kiếm với từ khóa khác.
                   </p>
@@ -173,11 +173,11 @@ const FavoritesPage: React.FC = () => {
               )}
             </>
           ) : (
-            <div className="text-center py-16 bg-white rounded-2xl shadow-soft animate-fade-in">
-              <div className="inline-flex items-center justify-center w-20 h-20 mb-6 bg-gradient-to-r from-red-100 to-pink-100 rounded-full">
-                <HeartIcon className="w-10 h-10 text-red-500" />
+            <div className="text-center py-16 bg-antoree-green/5 rounded-2xl shadow-soft animate-fade-in">
+              <div className="inline-flex items-center justify-center w-20 h-20 mb-6 bg-gradient-to-r from-antoree-purple/20 to-antoree-blue/20 rounded-full">
+                <HeartIcon className="w-10 h-10 text-antoree-purple" />
               </div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4 font-display">
+              <h2 className="text-2xl font-semibold text-antoree-green mb-4 font-display">
                 Chưa có khóa học yêu thích
               </h2>
               <p className="text-gray-600 mb-8 max-w-md mx-auto leading-relaxed">
@@ -203,7 +203,7 @@ const FavoritesPage: React.FC = () => {
 
           {/* Additional Actions */}
           {favoriteProducts.length > 0 && (
-            <div className="mt-12 bg-gradient-to-r from-brand-blue to-brand-purple rounded-2xl p-8 text-center text-white animate-slide-in-up">
+            <div className="mt-12 bg-gradient-to-r from-antoree-blue to-antoree-purple rounded-2xl p-8 text-center text-white animate-slide-in-up">
               <h3 className="text-2xl font-bold mb-4 font-display">
                 Sẵn sàng bắt đầu học?
               </h3>
@@ -211,12 +211,12 @@ const FavoritesPage: React.FC = () => {
                 Bạn đã có {favoriteProducts.length} khóa học trong danh sách yêu thích. Hãy bắt đầu hành trình học tập ngay hôm nay!
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-brand-blue font-medium px-8 py-3 rounded-lg hover:bg-gray-50 transition-all duration-300 transform hover:scale-105">
+                <button className="bg-white text-antoree-blue font-medium px-8 py-3 rounded-lg hover:bg-gray-50 transition-all duration-300 transform hover:scale-105">
                   Tạo lộ trình học tập
                 </button>
                 <Link
                   to="/"
-                  className="border-2 border-white text-white font-medium px-8 py-3 rounded-lg hover:bg-white hover:text-brand-blue transition-all duration-300"
+                  className="border-2 border-white text-white font-medium px-8 py-3 rounded-lg hover:bg-white hover:text-antoree-blue transition-all duration-300"
                 >
                   Khám phá thêm khóa học
                 </Link>

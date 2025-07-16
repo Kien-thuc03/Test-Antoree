@@ -59,13 +59,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
         />
         
         {/* Overlay */}
-        <div className={`absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent transition-opacity duration-300 ${
-          isHovered ? 'opacity-100' : 'opacity-0'
+        <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent transition-opacity duration-300 ${
+          isHovered ? 'opacity-100' : 'opacity-70'
         }`}>
           {/* Play Button */}
           <div className="absolute inset-0 flex items-center justify-center">
             <button 
-              className={`bg-white/20 backdrop-blur-sm rounded-full p-4 transform transition-all duration-300 ${
+              className={`bg-white/30 backdrop-blur-sm rounded-full p-4 transform transition-all duration-300 ${
                 isHovered ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
               }`}
               aria-label="Xem trước khóa học"
@@ -78,7 +78,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
 
         {/* Category Badge */}
         <div className="absolute top-3 left-3">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-brand-blue to-brand-purple text-white shadow-md">
+          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-antoree-blue to-antoree-purple text-white shadow-md">
             {product.category}
           </span>
         </div>
@@ -87,7 +87,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
         <button
           onClick={handleFavoriteClick}
           className={`absolute top-3 right-3 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110 ${
-            product.isFavorite ? 'text-red-500' : 'text-gray-600'
+            product.isFavorite ? 'text-antoree-purple' : 'text-gray-600'
           }`}
           aria-label={product.isFavorite ? "Bỏ yêu thích" : "Yêu thích"}
         >
@@ -101,11 +101,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
         {/* Quick Info */}
         <div className="absolute bottom-3 left-3 right-3 text-white text-sm">
           <div className="flex items-center space-x-4">
-            <div className="flex items-center">
+            <div className="flex items-center bg-black/30 px-2 py-1 rounded-full">
               <ClockIcon className="w-4 h-4 mr-1" />
               <span>2h 30m</span>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center bg-black/30 px-2 py-1 rounded-full">
               <UserGroupIcon className="w-4 h-4 mr-1" />
               <span>156</span>
             </div>
@@ -116,7 +116,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
       {/* Content */}
       <div className="p-6">
         {/* Title */}
-        <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-brand-blue transition-colors duration-300">
+        <h3 className="text-lg font-semibold text-antoree-green mb-2 line-clamp-2 group-hover:text-antoree-blue transition-colors duration-300">
           {product.name}
         </h3>
 

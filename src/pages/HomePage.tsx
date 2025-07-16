@@ -52,7 +52,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-gray-100">
       <Header />
       
       {/* Hero Section */}
@@ -102,15 +102,15 @@ const HomePage: React.FC = () => {
             <div className="grid grid-cols-3 gap-8 max-w-lg mx-auto">
               <div className="text-center">
                 <div className="text-3xl font-bold text-antoree-green-light mb-2">10K+</div>
-                <div className="text-gray-400 text-sm">Khóa học</div>
+                <div className="text-gray-300 text-sm">Khóa học</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-antoree-green-light mb-2">500+</div>
-                <div className="text-gray-400 text-sm">Giáo viên</div>
+                <div className="text-gray-300 text-sm">Giáo viên</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-antoree-green-light mb-2">50K+</div>
-                <div className="text-gray-400 text-sm">Học viên</div>
+                <div className="text-gray-300 text-sm">Học viên</div>
               </div>
             </div>
           </div>
@@ -118,13 +118,13 @@ const HomePage: React.FC = () => {
         
         {/* Wave divider */}
         <div className="absolute bottom-0 left-0 right-0">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" fill="#ffffff">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100" fill="#f9fafb">
             <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,100L1360,100C1280,100,1120,100,960,100C800,100,640,100,480,100C320,100,160,100,80,100L0,100Z"></path>
           </svg>
         </div>
       </section>
       
-      <main className="flex-grow bg-white">
+      <main className="flex-grow bg-gray-100">
         {/* Filter Section */}
         <FilterBar />
         
@@ -143,12 +143,12 @@ const HomePage: React.FC = () => {
           <section className="mb-16 animate-slide-in-up">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-2 font-display">
+                <h2 className="text-3xl font-bold text-antoree-green mb-2 font-display">
                   Khóa học nổi bật
                 </h2>
                 <p className="text-gray-600">Những khóa học được đánh giá cao nhất</p>
               </div>
-              <button className="group flex items-center space-x-2 text-brand-blue hover:text-brand-purple font-medium transition-colors duration-300">
+              <button className="group flex items-center space-x-2 text-antoree-blue hover:text-antoree-purple font-medium transition-colors duration-300">
                 <span>Xem tất cả</span>
                 <svg className="w-5 h-5 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -160,7 +160,7 @@ const HomePage: React.FC = () => {
           
           {/* CTA Section */}
           <section className="mb-16 animate-slide-in-up">
-            <div className="bg-gradient-to-r from-brand-blue to-brand-purple rounded-3xl overflow-hidden shadow-lifted">
+            <div className="bg-gradient-to-r from-antoree-blue to-antoree-purple rounded-3xl overflow-hidden shadow-lifted">
               <div className="p-8 md:p-12 text-center">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-display">
                   Bắt đầu hành trình học tập ngay hôm nay
@@ -169,10 +169,10 @@ const HomePage: React.FC = () => {
                   Đăng ký tài khoản để nhận ưu đãi đặc biệt và truy cập vào hàng nghìn khóa học chất lượng cao
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="bg-white text-brand-blue font-medium px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                  <button className="bg-white text-antoree-blue font-medium px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                     Đăng ký miễn phí
                   </button>
-                  <button className="border-2 border-white text-white font-medium px-8 py-4 rounded-xl hover:bg-white hover:text-brand-blue transition-all duration-300">
+                  <button className="border-2 border-white text-white font-medium px-8 py-4 rounded-xl hover:bg-white hover:text-antoree-blue transition-all duration-300">
                     Tìm hiểu thêm
                   </button>
                 </div>
