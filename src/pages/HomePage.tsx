@@ -44,11 +44,11 @@ const HomePage: React.FC = () => {
 
   const handleToggleFavorite = (productId: string) => {
     toggleFavorite(productId);
+    // Không mở modal khi toggle favorite
   };
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Tìm kiếm:', searchQuery);
   };
 
   return (
@@ -148,7 +148,10 @@ const HomePage: React.FC = () => {
                 </h2>
                 <p className="text-gray-600">Những khóa học được đánh giá cao nhất</p>
               </div>
-              <button className="group flex items-center space-x-2 text-antoree-blue hover:text-antoree-purple font-medium transition-colors duration-300">
+              <button 
+                type="button"
+                className="group flex items-center space-x-2 text-antoree-blue hover:text-antoree-purple font-medium transition-colors duration-300"
+              >
                 <span>Xem tất cả</span>
                 <svg className="w-5 h-5 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -169,10 +172,16 @@ const HomePage: React.FC = () => {
                   Đăng ký tài khoản để nhận ưu đãi đặc biệt và truy cập vào hàng nghìn khóa học chất lượng cao
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button className="bg-white text-antoree-blue font-medium px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                  <button 
+                    type="button"
+                    className="bg-white text-antoree-blue font-medium px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
                     Đăng ký miễn phí
                   </button>
-                  <button className="border-2 border-white text-white font-medium px-8 py-4 rounded-xl hover:bg-white hover:text-antoree-blue transition-all duration-300">
+                  <button 
+                    type="button"
+                    className="border-2 border-white text-white font-medium px-8 py-4 rounded-xl hover:bg-white hover:text-antoree-blue transition-all duration-300"
+                  >
                     Tìm hiểu thêm
                   </button>
                 </div>

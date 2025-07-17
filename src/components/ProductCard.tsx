@@ -16,6 +16,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
 
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.stopPropagation();
+    e.preventDefault();
     onToggleFavorite(product.id);
   };
 
@@ -73,8 +74,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
 
         {/* Favorite Button */}
         <button
+          type="button"
           onClick={handleFavoriteClick}
-          className={`absolute top-3 right-3 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110 ${
+          className={`absolute top-3 right-3 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center transition-all duration-300 hover:bg-white hover:scale-110 z-10 ${
             product.isFavorite ? 'text-antoree-purple' : 'text-gray-600 hover:text-antoree-purple'
           }`}
           aria-label={product.isFavorite ? "Bỏ yêu thích" : "Yêu thích"}
@@ -130,6 +132,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onToggleFavorite, on
 
         {/* Action Button */}
         <button
+          type="button"
           className="w-full bg-gradient-to-r from-[#4951F2] to-[#C599F2] text-white font-medium py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2"
           onClick={(e) => {
             e.stopPropagation();

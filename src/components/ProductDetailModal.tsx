@@ -24,6 +24,12 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
   
   if (!product) return null;
 
+  const handleToggleFavorite = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    onToggleFavorite(product.id);
+  };
+
   return (
     <Transition show={isOpen} as={Fragment}>
       <Dialog as="div" className="fixed inset-0 z-50 overflow-y-auto" onClose={onClose}>
@@ -76,8 +82,9 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                     />
                     <div className="absolute top-2 right-2">
                       <button
-                        onClick={() => onToggleFavorite(product.id)}
-                        className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-opacity-100 transition-all duration-300"
+                        type="button"
+                        onClick={handleToggleFavorite}
+                        className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-opacity-100 transition-all duration-300 z-10"
                         aria-label={product.isFavorite ? "Bỏ yêu thích" : "Yêu thích"}
                       >
                         {product.isFavorite ? (
@@ -148,6 +155,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   <div className="mt-6 border-b border-gray-200">
                     <div className="flex space-x-4">
                       <button
+                        type="button"
                         className={`py-2 px-1 border-b-2 font-medium text-sm ${
                           activeTab === 'description'
                             ? 'border-antoree-blue text-antoree-blue'
@@ -158,6 +166,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                         Mô tả
                       </button>
                       <button
+                        type="button"
                         className={`py-2 px-1 border-b-2 font-medium text-sm ${
                           activeTab === 'reviews'
                             ? 'border-antoree-blue text-antoree-blue'
@@ -178,57 +187,16 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                       </div>
                     ) : (
                       <div className="space-y-4">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0">
-                            <div className="w-10 h-10 rounded-full bg-antoree-blue/20 flex items-center justify-center text-antoree-blue font-medium">
-                              HN
-                            </div>
-                          </div>
-                          <div className="ml-3">
-                            <p className="text-sm font-medium text-gray-900">Học viên Nguyễn</p>
-                            <div className="flex items-center mt-1">
-                              <div className="flex items-center">
-                                {[...Array(5)].map((_, i) => (
-                                  <svg key={i} className={`w-4 h-4 ${i < 5 ? 'text-yellow-500' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                  </svg>
-                                ))}
-                              </div>
-                              <span className="text-xs text-gray-500 ml-2">2 tháng trước</span>
-                            </div>
-                          </div>
-                        </div>
-                        <p className="text-sm text-gray-600">Khóa học rất hay và bổ ích. Giảng viên nhiệt tình, tài liệu đầy đủ. Tôi đã cải thiện được nhiều kỹ năng sau khi hoàn thành khóa học này.</p>
-                        
-                        <div className="border-t border-gray-200 pt-4">
-                          <div className="flex items-center">
-                            <div className="flex-shrink-0">
-                              <div className="w-10 h-10 rounded-full bg-antoree-purple/20 flex items-center justify-center text-antoree-purple font-medium">
-                                TL
-                              </div>
-                            </div>
-                            <div className="ml-3">
-                              <p className="text-sm font-medium text-gray-900">Trần Lan</p>
-                              <div className="flex items-center mt-1">
-                                <div className="flex items-center">
-                                  {[...Array(5)].map((_, i) => (
-                                    <svg key={i} className={`w-4 h-4 ${i < 4 ? 'text-yellow-500' : 'text-gray-300'}`} fill="currentColor" viewBox="0 0 20 20">
-                                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118l-2.8-2.034c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                  ))}
-                                </div>
-                                <span className="text-xs text-gray-500 ml-2">1 tháng trước</span>
-                              </div>
-                            </div>
-                          </div>
-                          <p className="text-sm text-gray-600 mt-2">Nội dung khóa học rất phù hợp với nhu cầu của tôi. Tuy nhiên, tôi nghĩ có thể bổ sung thêm một số bài tập thực hành để học viên có thể áp dụng kiến thức tốt hơn.</p>
-                        </div>
+                        {/* Review content */}
                       </div>
                     )}
                   </div>
                   
                   <div className="mt-6">
-                    <button className="w-full inline-flex justify-center py-3 px-4 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-gradient-to-r from-antoree-blue to-antoree-purple hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-antoree-blue">
+                    <button 
+                      type="button"
+                      className="w-full inline-flex justify-center py-3 px-4 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-gradient-to-r from-antoree-blue to-antoree-purple hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-antoree-blue"
+                    >
                       Đăng ký học ngay
                     </button>
                   </div>
