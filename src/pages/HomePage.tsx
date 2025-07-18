@@ -180,7 +180,7 @@ const HomePage: React.FC = () => {
                   </button>
                   <button 
                     type="button"
-                    className="border-2 border-white text-white font-medium px-8 py-4 rounded-xl hover:bg-white hover:text-antoree-blue transition-all duration-300"
+                    className="border-2 border-white text-white-antoree font-medium px-8 py-4 rounded-xl hover:bg-white transition-all duration-300"
                   >
                     Tìm hiểu thêm
                   </button>

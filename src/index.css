@@ -347,6 +347,18 @@ html {
     color: #2933F2;
 }
 
+.text-white-antoree {
+    color: white;
+}
+
+.text-antoree-white:hover {
+    color: #4951F2;
+}
+
+.text-white-antoree:hover {
+    color: #4951F2;
+}
+
 .text-antoree-blue-light {
     color: #4951F2;
 }
